@@ -1,8 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Componentes
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -14,6 +18,16 @@ import { HowitworksComponent } from './components/globales/howitworks/howitworks
 import { SingleComponent } from './components/views/single/single.component';
 import { ListComponent } from './components/views/list/list.component';
 import { SubmitComponent } from './components/submit/submit.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { DashboardComponent } from './components/admin/dashboard/dashboard.component';
+import { MenuLateralComponent } from './components/admin/dashboard/menu-lateral/menu-lateral.component';
+import { MenuTopComponent } from './components/admin/dashboard/menu-top/menu-top.component';
+import { AdministrarPropiedadesComponent } from './components/admin/dashboard/administrar-propiedades/administrar-propiedades.component';
+import { ContactComponent } from './components/admin/dashboard/contact/contact.component';
+import { ListarPropiedadesComponent } from './components/admin/dashboard/listar-propiedades/listar-propiedades.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EditarPropiedadesComponent } from './components/admin/dashboard/administrar-propiedades/editar-propiedades.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +40,26 @@ import { SubmitComponent } from './components/submit/submit.component';
     HowitworksComponent,
     SingleComponent,
     ListComponent,
-    SubmitComponent
+    SubmitComponent,
+    AdminComponent,
+    DashboardComponent,
+    MenuLateralComponent,
+    MenuTopComponent,
+    AdministrarPropiedadesComponent,
+    ContactComponent,
+    ListarPropiedadesComponent,
+    EditarPropiedadesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgbModule,
+    ToastrModule.forRoot(),
+    HttpClientModule,
+    BrowserAnimationsModule,
+    NgbModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

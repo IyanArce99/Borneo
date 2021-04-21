@@ -10,7 +10,7 @@
                 <!-- Upper Heading -->
                 <div class="upper-heading">
                     <h3>
-                        Find your office 
+                        Find your office
                     </h3>
                     <p>Find great places to work, learn, or teach.</p>
                 </div>
@@ -28,24 +28,31 @@
                                 <form action="view/list">
                                     <div class="row">
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                            <input type="text" name="listing-search" placeholder="What are you looking for?">
+                                            <input type="text" name="listing-search" placeholder="List of cities">
                                         </div>
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-3 col-md-6 col-sm-12 location">
-                                            <input type="text" name="listing-search" placeholder="Lucation">
-                                            <span class="icon flaticon-placeholder" data-text="Type and hit enter"></span>
+                                            <!--<input type="text" name="listing-search" placeholder="Lucation">
+                                            <span class="icon flaticon-placeholder"
+                                                data-text="Type and hit enter"></span>-->
+                                            <select id="op" [formControl]="selected">
+                                                <option value="null" id="opts">Choose...</option>
+                                                <option value="barcelona" id="opts">Barcelona</option>
+                                                <option value="madrid" id="opts">Madrid</option>
+                                            </select>
                                         </div>
 
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-3 col-md-6 col-sm-12">
                                             <select class="chosen-select">
-                                                <option>Prueba</option>
+                                                <option>Nº seats: 1</option>
                                             </select>
                                         </div>
 
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-2 col-md-6 col-sm-12 text-right">
-                                            <button type="submit" class="theme-btn btn-style-one bg-pink" click="search()">Search</button>
+                                            <button type="submit" class="theme-btn btn-style-one bg-pink"
+                                                (click)="search(redirect)">Search</button>
                                         </div>
                                     </div>
                                 </form>
@@ -58,12 +65,14 @@
                                 <form method="post" action="index.html">
                                     <div class="row">
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                            <input type="text" name="listing-search" placeholder="What are you looking for?">
+                                            <input type="text" name="listing-search"
+                                                placeholder="What are you looking for?">
                                         </div>
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-3 col-md-6 col-sm-12 location">
                                             <input type="text" name="listing-search" placeholder="Lucation">
-                                            <span class="icon flaticon-placeholder" data-text="Type and hit enter"></span>
+                                            <span class="icon flaticon-placeholder"
+                                                data-text="Type and hit enter"></span>
                                         </div>
 
                                         <!-- Form Group -->
@@ -79,7 +88,8 @@
 
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-2 col-md-6 col-sm-12 text-right">
-                                            <button type="submit" class="theme-btn btn-style-one bg-pink">Search</button>
+                                            <button type="submit"
+                                                class="theme-btn btn-style-one bg-pink">Search</button>
                                         </div>
                                     </div>
                                 </form>
@@ -92,12 +102,14 @@
                                 <form method="post" action="index.html">
                                     <div class="row">
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                            <input type="text" name="listing-search" placeholder="What are you looking for?">
+                                            <input type="text" name="listing-search"
+                                                placeholder="What are you looking for?">
                                         </div>
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-3 col-md-6 col-sm-12 location">
                                             <input type="text" name="listing-search" placeholder="Lucation">
-                                            <span class="icon flaticon-placeholder" data-text="Type and hit enter"></span>
+                                            <span class="icon flaticon-placeholder"
+                                                data-text="Type and hit enter"></span>
                                         </div>
 
                                         <!-- Form Group -->
@@ -113,7 +125,8 @@
 
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-2 col-md-6 col-sm-12 text-right">
-                                            <button type="submit" class="theme-btn btn-style-one bg-pink">Search</button>
+                                            <button type="submit"
+                                                class="theme-btn btn-style-one bg-pink">Search</button>
                                         </div>
                                     </div>
                                 </form>
@@ -126,12 +139,14 @@
                                 <form method="post" action="index.html">
                                     <div class="row">
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                            <input type="text" name="listing-search" placeholder="What are you looking for?">
+                                            <input type="text" name="listing-search"
+                                                placeholder="What are you looking for?">
                                         </div>
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-3 col-md-6 col-sm-12 location">
                                             <input type="text" name="listing-search" placeholder="Lucation">
-                                            <span class="icon flaticon-placeholder" data-text="Type and hit enter"></span>
+                                            <span class="icon flaticon-placeholder"
+                                                data-text="Type and hit enter"></span>
                                         </div>
 
                                         <!-- Form Group -->
@@ -160,12 +175,14 @@
                                 <form method="post" action="index.html">
                                     <div class="row">
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12">
-                                            <input type="text" name="listing-search" placeholder="What are you looking for?">
+                                            <input type="text" name="listing-search"
+                                                placeholder="What are you looking for?">
                                         </div>
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-3 col-md-6 col-sm-12 location">
                                             <input type="text" name="listing-search" placeholder="Lucation">
-                                            <span class="icon flaticon-placeholder" data-text="Type and hit enter"></span>
+                                            <span class="icon flaticon-placeholder"
+                                                data-text="Type and hit enter"></span>
                                         </div>
 
                                         <!-- Form Group -->
@@ -198,7 +215,8 @@
             <div class="sec-title text-center">
                 <h2>Where are you looking for?</h2>
                 <span class="divider"></span>
-                <div class="text">Explore some of the best tips from around the city from our partners and friends.</div>
+                <div class="text">Explore some of the best tips from around the city from our partners and friends.
+                </div>
             </div>
 
             <div class="row">
@@ -280,7 +298,7 @@
                         <div class="overlay-box">
                             <div class="content">
                                 <h5>Madrid</h5>
-                                <span class="locations">94 Locations</span>
+                                <span class="locations">6 Locations</span>
                                 <a href="/view/list" class="overlay-link"></a>
                             </div>
                         </div>
@@ -290,26 +308,34 @@
         </div>
     </section>
 
-    <section class="listing-section style-two">
+    <section class="listing-section style-two" #redirect>
         <div class="container-fluid">
             <div class="sec-title text-center">
-                <h2>Featured Offices</h2>
+                <h2>Featured spaces</h2>
                 <span class="divider"></span>
-                <div class="text">Explore some of the best tips from around the city from our partners and friends.</div>
+                <div class="text">Explore some of the best tips from around the city from our partners and friends.
+                </div>
             </div>
 
             <div class="carousel-outer">
                 <div class="four-items-carousel owl-carousel owl-theme default-nav">
                     <div class="container-fluir">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-4" *ngFor="let propiedad of propiedadesFiltradas">
                                 <div class="listing-block">
                                     <div class="inner-box">
                                         <div class="image-box">
-                                            <figure class="image"><img src="assets/images/offices/test.png" alt=""></figure>
+                                            <figure class="image"><img src="assets/images/offices/test.png" alt="">
+                                            </figure>
                                             <div class="tags">
-                                                <span>Featured</span>
-                                                <span>$25 - $35</span>
+                                                <span>Fee from</span>
+                                                <span>{{propiedad.tarifa}}</span>
+                                                <span>{{propiedad.personas}}</span>
+                                                <!--<select class="seleccionar">
+                                                    <option>5-10</option>
+                                                    <option>10-20</option>
+                                                    <option>20-30</option>
+                                                </select>-->
                                             </div>
                                         </div>
                                         <div class="lower-content">
@@ -320,99 +346,24 @@
                                                 <span class="fa fa-star"></span>
                                                 <span class="fa fa-star"></span>
                                             </div>
-                                            <h3><a href="/view/office">Test office 1 <span class="icon icon-verified"></span></a></h3>
-                                            <div class="text">Test office 1 descrip</div>
+                                            <h3><a [routerLink]="['/view/office',propiedad.id]">{{propiedad.nombre}} <span
+                                                        class="icon icon-verified"></span></a></h3>
+                                            <div class="text">{{propiedad.descripcion}}</div>
                                             <ul class="info">
-                                                <li><span class="flaticon-pin"></span> Parla</li>
+                                                <li><span class="flaticon-pin"></span> {{propiedad.ciudad}}</li>
                                                 <li><span class="flaticon-phone-call"></span> 633 83 24 14 </li>
                                             </ul>
                                         </div>
                                         <div class="bottom-box">
-                                            <div class="places"> 
-                                                <div class="place"><span class="icon flaticon-user"></span> +5 persons </div>
+                                            <div class="places">
+                                                <div class="place"><span class="icon flaticon-user"></span> +5 persons
+                                                </div>
                                             </div>
                                             <div class="status">Free</div>
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
-
-                            <div class="col-4">
-                                <div class="listing-block">
-                                    <div class="inner-box">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="assets/images/offices/test.png" alt=""></figure>
-                                            <div class="tags">
-                                                <span>Featured</span>
-                                                <span>$25 - $35</span>
-                                            </div>
-                                        </div>
-                                        <div class="lower-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                            <h3><a href="/view/office">Test office 1 <span class="icon icon-verified"></span></a></h3>
-                                            <div class="text">Test office 1 descrip</div>
-                                            <ul class="info">
-                                                <li><span class="flaticon-pin"></span> Parla</li>
-                                                <li><span class="flaticon-phone-call"></span> 633 83 24 14 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="bottom-box">
-                                            <div class="places"> 
-                                                <div class="place"><span class="icon flaticon-user"></span> +5 persons </div>
-                                            </div>
-                                            <div class="status">Free</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
-                            <div class="col-4">
-                                <div class="listing-block">
-                                    <div class="inner-box">
-                                        <div class="image-box">
-                                            <figure class="image"><img src="assets/images/offices/test.png" alt=""></figure>
-                                            <div class="tags">
-                                                <span>Featured</span>
-                                                <span>$25 - $35</span>
-                                            </div>
-                                        </div>
-                                        <div class="lower-content">
-                                            <div class="rating">
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                                <span class="fa fa-star"></span>
-                                            </div>
-                                            <h3><a href="/view/office">Test office 1 <span class="icon icon-verified"></span></a></h3>
-                                            <div class="text">Test office 1 descrip</div>
-                                            <ul class="info">
-                                                <li><span class="flaticon-pin"></span> Parla</li>
-                                                <li><span class="flaticon-phone-call"></span> 633 83 24 14 </li>
-                                            </ul>
-                                        </div>
-                                        <div class="bottom-box">
-                                            <div class="places"> 
-                                                <div class="place"><span class="icon flaticon-user"></span> +5 persons </div>
-                                            </div>
-                                            <div class="status">Free</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-
                         </div>
                     </div>
 
