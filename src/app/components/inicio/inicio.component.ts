@@ -24,14 +24,6 @@ export class InicioComponent implements OnInit {
     private _propiedadService: PropiedadService, private modal: NgbModal) {
   }
 
-  ngOnInit(): void {
-    this.selected.valueChanges.subscribe(changes => {
-      this.Opciones(changes);
-      console.log(this.opc);
-    });
-    this.getOwned();
-  }
-
   search(el:HTMLElement) {
     this.propiedades.forEach(element =>{
       if(element.comunidad_autonoma==this.opc){
@@ -55,6 +47,13 @@ export class InicioComponent implements OnInit {
             console.log(<any>error);
         }
     );
+  }
+
+  ngOnInit(): void {
+    this.selected.valueChanges.subscribe(changes => {
+      this.Opciones(changes);
+    });
+    this.getOwned();
   }
 
 }

@@ -15,7 +15,6 @@ import { EditarPropiedadesComponent } from './components/admin/dashboard/adminis
 
 const routes: Routes = [
   { path: '', component: InicioComponent },
-  { path: ':comunidad_autonoma', component: InicioComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'submit', component: SubmitComponent },
@@ -30,6 +29,7 @@ const routes: Routes = [
       {path: 'contact', component: ContactComponent}
     ]
   },
+  { path: ':comunidad_autonoma', component: InicioComponent },
 ];
 
 @NgModule({
