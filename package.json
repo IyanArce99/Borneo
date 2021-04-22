@@ -24,6 +24,7 @@
     "@fortawesome/angular-fontawesome": "^0.8.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@ng-bootstrap/ng-bootstrap": "^8.0.4",
+    "angular-localstorage": "^1.1.5",
     "angular-material": "^1.2.2",
     "angular-moment": "^1.3.0",
     "bootstrap": "^4.6.0",

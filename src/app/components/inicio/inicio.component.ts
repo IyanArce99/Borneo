@@ -5,6 +5,7 @@ import {PropiedadService} from '../../services/propiedad.service';
 import {Owned} from '../../models/owned';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { FormControl } from "@angular/forms";
+import { element } from 'protractor';
 
 
 @Component({
@@ -20,11 +21,13 @@ export class InicioComponent implements OnInit {
   public opc: any;
 
   constructor(private toastr: ToastrService, private _route:ActivatedRoute,private _router:Router, 
-    private _propiedadService: PropiedadService, private modal: NgbModal) {}
+    private _propiedadService: PropiedadService, private modal: NgbModal) {
+  }
 
   ngOnInit(): void {
     this.selected.valueChanges.subscribe(changes => {
       this.Opciones(changes);
+      console.log(this.opc);
     });
     this.getOwned();
   }
@@ -33,10 +36,10 @@ export class InicioComponent implements OnInit {
     this.propiedades.forEach(element =>{
       if(element.comunidad_autonoma==this.opc){
         this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
+        this._router.navigate(['/',element.comunidad_autonoma]);
       }
     });
-
-    el.scrollIntoView()
+    el.scrollIntoView();
   }
 
   Opciones(opc1) {

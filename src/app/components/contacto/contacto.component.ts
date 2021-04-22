@@ -4,6 +4,7 @@ import {ContactService} from '../../services/contact.service';
 import {Contact} from '../../models/contact';
 import { GLOBAL } from '../../services/global';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 var moment = require('moment');
 var current_timestamp = moment().format("YYYY/MM/DD hh:mm:ss");
@@ -16,7 +17,6 @@ var current_timestamp = moment().format("YYYY/MM/DD hh:mm:ss");
 })
 export class ContactoComponent {
   public contacto: Contact;
-  date=new Date();
 
   contactForm = new FormGroup({
     nombre: new FormControl(''),
@@ -26,19 +26,19 @@ export class ContactoComponent {
     fecha: new FormControl(current_timestamp),
   });
 
-  constructor(private _route:ActivatedRoute,private _router:Router, private _contactService: ContactService, private fb: FormBuilder) { 
+  constructor(private toastr: ToastrService,private _route:ActivatedRoute,private _router:Router, private _contactService: ContactService, private fb: FormBuilder) { 
   }
 
   onSubmit(){
     this._contactService.addContact(this.contactForm.value).subscribe(
       result => {
-        let json=JSON.stringify(result);
-        console.log(current_timestamp);
-        console.log(json);
+        this.contactForm=result;
       },
       error => {
           console.log(<any>error);
       }
     );
+    this.contactForm.reset();
+    this.toastr.success('Mensaje enviado correctamente, Gracias','',{ "positionClass" : "toast-bottom-right"});
   }
 }

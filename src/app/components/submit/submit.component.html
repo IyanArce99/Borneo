@@ -47,26 +47,26 @@
                             <!-- Comment Form -->
                             <div class="default-form">
                                 <!--Comment Form-->
-                                <form action="#" method="post" id="email-form">
+                                <form method="post" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
                                     <div class="row clearfix ">
                                         <div class="form-group col-lg-12 col-md-12 col-sm-12">
                                             <div class="response"></div>
                                         </div>
 
                                         <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <input type="text" name="username" class="username" placeholder="Name *" required>
+                                            <input type="text" formControlName="nombre" class="form-control" placeholder="Name *" required>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <input type="email" name="email" class="email" placeholder="Your Email Address *" required>
+                                            <input type="email" formControlName="email" class="form-control" placeholder="Your Email Address *" required>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <input type="text" name="subject" class="subject" placeholder="Subject *" required>
+                                            <input type="text" formControlName="asunto" class="form-control" placeholder="Subject *" required>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <textarea name="message" placeholder="Message" required=""></textarea>
+                                            <textarea formControlName="mensaje" placeholder="Message" required=""></textarea>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <button class="theme-btn btn-style-two" type="button" id="submit" name="submit-form">Submit Review</button>
+                                            <button class="theme-btn btn-style-two" type="submit" id="submit" name="submit-form">Submit Review</button>
                                         </div> 
                                     </div>
                                 </form>

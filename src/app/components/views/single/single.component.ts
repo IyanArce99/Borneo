@@ -19,23 +19,23 @@ export class SingleComponent implements OnInit {
   public id;
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _propiedadService: PropiedadService) {
-  }
-
-  ngOnInit() {
-    this.id=this._route.snapshot.params['id'];
-    this.recogerDato();
-    console.log(this.propiedad);
+  
   }
 
   recogerDato() {
     this._propiedadService.getPropiedad(this.id).subscribe(
       response => {
         this.propiedad = response;
-        console.log(this.propiedad);
+        console.log("Recoger dato: "+this.propiedad);
       }, error => {
         console.log(<any>error);
       }
     );
+  }
+
+  ngOnInit() {
+    this.id=this._route.snapshot.params['id'];
+    this.recogerDato();
   }
 
 }

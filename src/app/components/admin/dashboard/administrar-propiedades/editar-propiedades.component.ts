@@ -15,25 +15,6 @@ export class EditarPropiedadesComponent {
     public propiedad: Owned;
     public data:any;
 
-    ngOnInit(){
-        this.recogerDato();
-    }
-
-    recogerDato(){
-        this._route.params.forEach((params: Params) => {
-            let id= params['id'];
-
-            this._propiedadService.getPropiedad(id).subscribe(
-                response => {
-                    this.data=response;
-                    this.propiedad=this.data;
-                }, error =>{
-                    console.log(<any>error);
-                }
-            );
-        });
-    }
-
     propertyForm = new FormGroup({
         nombre: new FormControl(''),
         descripcion: new FormControl(''),
@@ -53,6 +34,25 @@ export class EditarPropiedadesComponent {
         ciudad: new FormControl(''),
         comunidad_autonoma: new FormControl(''),
     });
+
+    ngOnInit(){
+        this.recogerDato();
+    }
+
+    recogerDato(){
+        this._route.params.forEach((params: Params) => {
+            let id= params['id'];
+
+            this._propiedadService.getPropiedad(id).subscribe(
+                response => {
+                    this.data=response;
+                    this.propiedad=this.data;
+                }, error =>{
+                    console.log(<any>error);
+                }
+            );
+        });
+    }
 
     constructor(private _route:ActivatedRoute,private _router:Router, private _propiedadService: PropiedadService, private fb: FormBuilder) { 
     }
