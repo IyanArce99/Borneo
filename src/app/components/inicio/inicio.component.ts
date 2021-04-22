@@ -19,6 +19,7 @@ export class InicioComponent implements OnInit {
   public propiedadesFiltradas:Array<Owned>;
   public selected: FormControl = new FormControl(null);
   public opc: any;
+  public comunidad;
 
   constructor(private toastr: ToastrService, private _route:ActivatedRoute,private _router:Router, 
     private _propiedadService: PropiedadService, private modal: NgbModal) {
@@ -38,10 +39,23 @@ export class InicioComponent implements OnInit {
     this.opc=opc1;
   }
 
+  recarga(){
+    this.comunidad=this._route.snapshot.params['comunidad_autonoma'];
+    this.propiedades.forEach(element =>{
+      if(element.comunidad_autonoma==this.comunidad){
+        this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
+        this._router.navigate(['/',element.comunidad_autonoma]);
+      }
+    });
+  }
+
   getOwned(){
     this._propiedadService.getOwned().subscribe(
         result => {
             this.propiedades = result;
+            if(this._router.url!='/'){
+              this.recarga();
+            }
         },
         error => {
             console.log(<any>error);
