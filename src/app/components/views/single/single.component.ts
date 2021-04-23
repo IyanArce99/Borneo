@@ -26,7 +26,6 @@ export class SingleComponent implements OnInit {
     this._propiedadService.getPropiedad(this.id).subscribe(
       response => {
         this.propiedad = response;
-        console.log("Recoger dato: "+this.propiedad);
       }, error => {
         console.log(<any>error);
       }

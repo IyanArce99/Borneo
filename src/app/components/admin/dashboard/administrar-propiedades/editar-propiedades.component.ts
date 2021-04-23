@@ -45,8 +45,26 @@ export class EditarPropiedadesComponent {
 
             this._propiedadService.getPropiedad(id).subscribe(
                 response => {
-                    this.data=response;
-                    this.propiedad=this.data;
+                    this.propiedad=response;
+                    
+                    for(let i in this.propiedad){
+                        this.propertyForm.get('nombre').setValue(this.propiedad[i].nombre);
+                        this.propertyForm.get('descripcion').setValue(this.propiedad[i].descripcion);
+                        this.propertyForm.get('personas').setValue(this.propiedad[i].personas);
+                        this.propertyForm.get('access').setValue(this.propiedad[i].access);
+                        this.propertyForm.get('salas_reuniones').setValue(this.propiedad[i].salas_reuniones);
+                        this.propertyForm.get('reception').setValue(this.propiedad[i].reception);
+                        this.propertyForm.get('eventos_network').setValue(this.propiedad[i].eventos_network);
+                        this.propertyForm.get('terraza').setValue(this.propiedad[i].terraza);
+                        this.propertyForm.get('cafe_relax').setValue(this.propiedad[i].cafe_relax);
+                        this.propertyForm.get('seguridad').setValue(this.propiedad[i].seguridad);
+                        this.propertyForm.get('limpieza').setValue(this.propiedad[i].limpieza);
+                        this.propertyForm.get('tarifa').setValue(this.propiedad[i].tarifa);
+                        this.propertyForm.get('tipo_propiedad').setValue(this.propiedad[i].tipo_propiedad);
+                        this.propertyForm.get('direccion').setValue(this.propiedad[i].direccion);
+                        this.propertyForm.get('ciudad').setValue(this.propiedad[i].ciudad);
+                        this.propertyForm.get('comunidad_autonoma').setValue(this.propiedad[i].comunidad_autonoma);
+                    }
                 }, error =>{
                     console.log(<any>error);
                 }
@@ -62,6 +80,7 @@ export class EditarPropiedadesComponent {
             let id= params['id'];
                 this._propiedadService.editPropiedad(id,this.propertyForm.value).subscribe(
                     result => {
+                        console.log(this.propertyForm.value);
                         this._router.navigate(['/dashboard/listPropertys']);
                     },
                     error => {

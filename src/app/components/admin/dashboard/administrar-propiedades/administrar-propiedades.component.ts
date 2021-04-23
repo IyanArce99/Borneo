@@ -44,8 +44,6 @@ export class AdministrarPropiedadesComponent {
     this._propiedadService.addPropiedad(this.propertyForm.value).subscribe(
       result => {
         let json=JSON.stringify(result);
-        console.log(json);
-        
         this._router.navigate(['dashboard/listPropertys']);
       },
       error => {
