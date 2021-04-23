@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { JwPaginationModule } from 'jw-angular-pagination';
 
 // Componentes
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -59,7 +60,8 @@ import { EditarPropiedadesComponent } from './components/admin/dashboard/adminis
     ToastrModule.forRoot(),
     HttpClientModule,
     BrowserAnimationsModule,
-    NgbModalModule
+    NgbModalModule,
+    JwPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

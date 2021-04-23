@@ -20,6 +20,9 @@ export class InicioComponent implements OnInit {
   public selected: FormControl = new FormControl(null);
   public opc: any;
   public comunidad;
+  pageOfItems: Array<any>;
+  items = [];
+  contador:number=0;
 
   constructor(private toastr: ToastrService, private _route:ActivatedRoute,private _router:Router, 
     private _propiedadService: PropiedadService, private modal: NgbModal) {
@@ -30,8 +33,10 @@ export class InicioComponent implements OnInit {
       if(element.comunidad_autonoma==this.opc){
         this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
         this._router.navigate(['/',element.comunidad_autonoma]);
+        this.contador++;
       }
     });
+    this.contador=0;
     el.scrollIntoView();
   }
 
@@ -68,6 +73,10 @@ export class InicioComponent implements OnInit {
       this.Opciones(changes);
     });
     this.getOwned();
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+    this.pageOfItems = pageOfItems;
   }
 
 }
