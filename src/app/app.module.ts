@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwPaginationModule } from 'jw-angular-pagination';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 // Componentes
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -61,7 +62,8 @@ import { EditarPropiedadesComponent } from './components/admin/dashboard/adminis
     HttpClientModule,
     BrowserAnimationsModule,
     NgbModalModule,
-    JwPaginationModule
+    JwPaginationModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

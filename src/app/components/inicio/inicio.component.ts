@@ -20,9 +20,9 @@ export class InicioComponent implements OnInit {
   public selected: FormControl = new FormControl(null);
   public opc: any;
   public comunidad;
-  pageOfItems: Array<any>;
-  items = [];
-  contador:number=0;
+  public page:number=1;
+  public mostrarTextoEntero=false;
+  public arrayTextoLimpio;
 
   constructor(private toastr: ToastrService, private _route:ActivatedRoute,private _router:Router, 
     private _propiedadService: PropiedadService, private modal: NgbModal) {
@@ -33,10 +33,9 @@ export class InicioComponent implements OnInit {
       if(element.comunidad_autonoma==this.opc){
         this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
         this._router.navigate(['/',element.comunidad_autonoma]);
-        this.contador++;
+        this.arrayTextoLimpio = element.descripcion.replace(/<[^>]*>/g, "").split(" ").splice(0, 20).join(" ");
       }
     });
-    this.contador=0;
     el.scrollIntoView();
   }
 
@@ -49,6 +48,7 @@ export class InicioComponent implements OnInit {
     this.propiedades.forEach(element =>{
       if(element.comunidad_autonoma==this.comunidad){
         this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
+        this.arrayTextoLimpio = element.descripcion.replace(/<[^>]*>/g, "").split(" ").splice(0, 20).join(" ");
         this._router.navigate(['/',element.comunidad_autonoma]);
       }
     });
@@ -75,8 +75,5 @@ export class InicioComponent implements OnInit {
     this.getOwned();
   }
 
-  onChangePage(pageOfItems: Array<any>) {
-    this.pageOfItems = pageOfItems;
-  }
 
 }

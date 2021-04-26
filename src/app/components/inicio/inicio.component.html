@@ -321,20 +321,37 @@
                 <div class="four-items-carousel owl-carousel owl-theme default-nav">
                     <div class="container-fluir">
                         <div class="row">
-                            <div class="col-4" *ngFor="let propiedad of propiedadesFiltradas">
+                            <div class="col-4" *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 3, currentPage: page }">
                                 <div class="listing-block">
                                     <div class="inner-box">
                                         <div class="image-box">
-                                            <figure class="image"><img src="assets/images/offices/test.png" alt="">
-                                            </figure>
+
+                                            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                                                <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                                        <figure class="image d-block w-100"><img src="assets/images/offices/test.png">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <figure class="image d-block w-100"><img src="">
+                                                        </figure>
+                                                    </div>
+                                                    <div class="carousel-item">
+                                                        <figure class="image d-block w-100"><img src="">
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <div class="tags">
-                                                <span>{{propiedad.tarifa}} euros/mes</span>
+                                                <span>Desde: {{propiedad.tarifa}} euros/mes</span>
                                                 <!--<select class="seleccionar">
                                                     <option>5-10</option>
                                                     <option>10-20</option>
                                                     <option>20-30</option>
                                                 </select>-->
                                             </div>
+                                            <i class="fas fa-exclamation-triangle colocar">Precios Orientativos</i>
                                         </div>
                                         <div class="lower-content">
                                             <div class="rating">
@@ -346,7 +363,17 @@
                                             </div>
                                             <h3><a [routerLink]="['/view/office',propiedad.id]">{{propiedad.nombre}} <span
                                                         class="icon icon-verified"></span></a></h3>
-                                            <div class="text">{{propiedad.descripcion}}</div>
+                                            
+                                            <span *ngIf="mostrarCompleto">
+                                                <div [innerHTML]="propiedad.descripcion"></div>
+                                                 <a (click)="mostrarCompleto = !mostrarCompleto" href="javascript:void(0)">...Ocultar</a>
+                                            </span>
+                                                        
+                                            <span *ngIf="!mostrarCompleto">
+                                                {{arrayTextoLimpio}} <a (click)="mostrarCompleto = !mostrarCompleto" title="Mostrar texto completo"
+                                                href="javascript:void(0)">Leer más</a>
+                                            </span>
+
                                             <ul class="info">
                                                 <li><span class="flaticon-pin"></span> {{propiedad.ciudad}}</li>
                                                 <li><span class="flaticon-phone-call"></span> 633 83 24 14 </li>
@@ -361,14 +388,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer pb-0 pt-3">
-                                    <jw-pagination [propiedadesFiltradas]="propiedadesFiltradas" (changePage)="onChangePage($event)"></jw-pagination>
-                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
             </div>
         </div>
     </section>
