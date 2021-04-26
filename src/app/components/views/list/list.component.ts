@@ -23,8 +23,8 @@ export class ListComponent implements OnInit {
   public comunidad;
   public page:number=1;
   public mostrarTextoEntero=false;
-  public arrayBooleanos:Array<Boolean>= [];
-  public arrayComprobador:Array<number>=[];
+  //public arrayBooleanos:Array<Boolean>= [];
+  //public arrayComprobador:Array<number>=[];
   public contador:number=0;
   public contar:string;
   public contadorComprobador=0;
@@ -41,7 +41,7 @@ export class ListComponent implements OnInit {
   }
 
   search() {
-    var access = <HTMLInputElement> document.getElementById("check-a");
+    /*var access = <HTMLInputElement> document.getElementById("check-a");
     var reuniones = <HTMLInputElement> document.getElementById("check-b");
     var recepcion = <HTMLInputElement> document.getElementById("check-c");
     var eventos = <HTMLInputElement> document.getElementById("check-d");
@@ -72,23 +72,61 @@ export class ListComponent implements OnInit {
         this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
         this.contador++;
       }
-      /*else{
+      else{
         for(var j=0; j<this.arrayComprobador.length; j++){
-          if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element[this.arrayComprobador[j]+4]){
-            this.contadorComprobador++;
-          }else{
-            break;
+          if(this.arrayComprobador[j]==0){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.access){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==1){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.salas_reuniones){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==2){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.reception){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==3){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.eventos_network){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==4){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.terraza){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==5){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.cafe_relax){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==6){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.seguridad){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==7){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.limpieza){
+              this.contadorComprobador++;
+            }
           }
-        }
-        if(this.contadorComprobador==(this.arrayComprobador.length-1)){
-          if(element.comunidad_autonoma==this.opc){
-            this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
-            this.contador++;
-          }
-        }
-      }*/
-    });
 
+          console.log(this.contadorComprobador);
+          if(this.contadorComprobador==(this.arrayComprobador.length-1)){
+            if(element.comunidad_autonoma==this.opc){
+              this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
+              this.contador++;
+            }
+          }
+
+          this.contadorComprobador=0;
+        }
+      }
+    });*/
+
+    this.propiedades.forEach(element =>{
+      if(element.comunidad_autonoma==this.opc){
+        this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
+        this.contador++;
+      }
+    });
 
     this.contar=(this.contador/2).toPrecision(1);
   }
