@@ -364,15 +364,7 @@
                                             <h3><a [routerLink]="['/view/office',propiedad.id]">{{propiedad.nombre}} <span
                                                         class="icon icon-verified"></span></a></h3>
                                             
-                                            <span *ngIf="mostrarCompleto">
-                                                <div [innerHTML]="propiedad.descripcion"></div>
-                                                 <a (click)="mostrarCompleto = !mostrarCompleto" href="javascript:void(0)">...Ocultar</a>
-                                            </span>
-                                                        
-                                            <span *ngIf="!mostrarCompleto">
-                                                {{arrayTextoLimpio}} <a (click)="mostrarCompleto = !mostrarCompleto" title="Mostrar texto completo"
-                                                href="javascript:void(0)">Leer más</a>
-                                            </span>
+                                            <div class="text">{{propiedad.descripcion}}</div>
 
                                             <ul class="info">
                                                 <li><span class="flaticon-pin"></span> {{propiedad.ciudad}}</li>

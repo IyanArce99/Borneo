@@ -20,8 +20,11 @@
                                             </div>
                                             <!-- Form Group -->
                                             <div class="form-group col-lg-4 col-md-12 col-sm-12 location">
-                                                <input type="text" name="listing-search" placeholder="Localización">
-                                                <span class="icon flaticon-placeholder"></span>
+                                                <select id="op" [formControl]="selected">
+                                                    <option value="null" id="opts">Elegir...</option>
+                                                    <option value="barcelona" id="opts">Barcelona</option>
+                                                    <option value="madrid" id="opts">Madrid</option>
+                                                </select>
                                             </div>
             
                                             <!-- Form Group -->
@@ -59,20 +62,20 @@
                                             <label for="check-d">Eventos</label>                                
                                         </li>
                                         <li>
-                                            <input id="check-a" type="checkbox" name="check">
-                                            <label for="check-a">Terraza</label>                                
+                                            <input id="check-e" type="checkbox" name="check">
+                                            <label for="check-e">Terraza</label>                                
                                         </li>
                                         <li>
-                                            <input id="check-b" type="checkbox" name="check">
-                                            <label for="check-b">Zona de relax</label>                                
+                                            <input id="check-f" type="checkbox" name="check">
+                                            <label for="check-f">Zona de relax</label>                                
                                         </li>
                                         <li>
-                                            <input id="check-c" type="checkbox" name="check">
-                                            <label for="check-c">Seguridad</label>                                
+                                            <input id="check-g" type="checkbox" name="check">
+                                            <label for="check-g">Seguridad</label>                                
                                         </li>
                                         <li>
-                                            <input id="check-d" type="checkbox" name="check">
-                                            <label for="check-d">Limpieza</label>                                
+                                            <input id="check-h" type="checkbox" name="check">
+                                            <label for="check-h">Limpieza</label>                                
                                         </li>
                                     </ul>
                                 </div>
@@ -85,8 +88,9 @@
                                         <div class="arrange">
                                             <a href="#" class="active"><span class="icon flaticon-squares"></span></a>
                                         </div>
-                                        <div class="text">2 Resultados encontrados (Enseñando 1-25)</div>
+                                        <div class="text">{{contador}} Resultados encontrados (Enseñando 1-{{contar}})</div>
                                     </div>
+                                    <!--
                                     <div class="sort-by">
                                         <select class="chosen-select">
                                             <option>Sort By</option>
@@ -95,19 +99,19 @@
                                             <option>Industrial</option>
                                             <option>Apartments</option>
                                         </select>
-                                    </div>
+                                    </div>-->
                                 </div>
             
                                  <!-- Listings -->
                                 <div class="row">
                                     <!-- Listing Block -->
-                                    <div class="listing-block col-lg-6 col-md-12">
-                                        <div class="inner-box">
+                                    <div class="listing-block col-lg-6 col-md-12" *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 2, currentPage: page }">
+                                        <div class="inner-box" >
                                             <div class="image-box">
                                                 <figure class="image"><img src="assets/images/view/office3.png" alt=""></figure>
                                                 <div class="tags">
                                                     <span>Destacado</span>
-                                                    <span>25 - 35 euros</span>
+                                                    <span>{{propiedad.tarifa}} euros/mes</span>
                                                 </div>
                                             </div>
                                             <div class="lower-content">
@@ -119,55 +123,20 @@
                                                     <span class="fa fa-star"></span>
                                                     <span class="fa fa-star"></span>
                                                 </div>
-                                                <h3><a href="#">Test office 1<span class="icon icon-verified"></span></a></h3>
-                                                <div class="text">Test office 1 descrip</div>
+                                                <h3><a href="#">{{propiedad.nombre}}<span class="icon icon-verified"></span></a></h3>
+                                                            
+                                                <div class="text">{{propiedad.descripcion}}</div>
+
                                                 <ul class="info">
-                                                    <li><span class="flaticon-pin"></span> Parla</li>
+                                                    <li><span class="flaticon-pin"></span> {{propiedad.ciudad}}</li>
                                                     <li><span class="flaticon-phone-call"></span>633 83 24 14</li>
                                                 </ul>
                                             </div>
                                             <div class="bottom-box">
                                                 <div class="places"> 
-                                                    <div class="place"><span class="icon flaticon-user"></span> +5 personas </div>
+                                                    <div class="place"><span class="icon flaticon-user"></span> +{{propiedad.personas}} personas </div>
                                                 </div>
                                                 <div class="status">Cerrado</div>
-                                            </div>
-                                        </div>
-                                        
-                                        <a href="view/office" class="listing-item-container overlay-link" data-marker-id="1"></a>
-                                    </div>
-            
-                                    <!-- Listing lLock -->
-                                    <div class="listing-block col-lg-6 col-md-12">
-                                        <div class="inner-box">
-                                            <div class="image-box">
-                                                <figure class="image"><img src="assets/images/view/office3.png" alt=""></figure>
-                                                <div class="tags">
-                                                    <span>Featured</span>
-                                                    <span>$25 - $35</span>
-                                                </div>
-                                            </div>
-                                            <div class="lower-content">
-                                                <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg" alt="" /></div>
-                                                <div class="rating">
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </div>
-                                                <h3><a href="#">Test office 1<span class="icon icon-verified"></span></a></h3>
-                                                <div class="text">Test office 1 descrip</div>
-                                                <ul class="info">
-                                                    <li><span class="flaticon-pin"></span> Parla</li>
-                                                    <li><span class="flaticon-phone-call"></span>633 83 24 14</li>
-                                                </ul>
-                                            </div>
-                                            <div class="bottom-box">
-                                                <div class="places"> 
-                                                    <div class="place"><span class="icon flaticon-user"></span> +5 persons </div>
-                                                </div>
-                                                <div class="status">Now Closed</div>
                                             </div>
                                         </div>
                                         
@@ -178,6 +147,9 @@
                                <!-- Pagination -->
                                 <nav class="ls-pagination">
                                     <ul>
+                                        <li class="next"><pagination-controls (pageChange)="page = $event"></pagination-controls></li>
+                                    </ul>
+                                    <!--<ul>
                                         <li class="prev"><a href="#"><i class="flaticon-left"></i> Anterior</a></li>
                                         <li><a href="#">1</a></li>
                                         <li><a href="#" class="current-page">2</a></li>
@@ -185,7 +157,7 @@
                                         <li class="dots">...</li>
                                         <li class="total"><a href="#">14</a></li>
                                         <li class="next"><a href="#">Siguiente <i class="flaticon-right"></i> </a></li>
-                                    </ul>
+                                    </ul>-->
                                 </nav>
                             </div>
                     </div>
