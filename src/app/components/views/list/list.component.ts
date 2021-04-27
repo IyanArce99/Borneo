@@ -17,14 +17,14 @@ import { access } from 'node:fs';
 export class ListComponent implements OnInit {
 
   public propiedades:Array<Owned>;
-  public propiedadesFiltradas:Array<Owned>;
+  public propiedadesFiltradas:Array<Owned>=[];
   public selected: FormControl = new FormControl(null);
   public opc: any;
   public comunidad;
   public page:number=1;
   public mostrarTextoEntero=false;
-  //public arrayBooleanos:Array<Boolean>= [];
-  //public arrayComprobador:Array<number>=[];
+  public arrayBooleanos:Array<Boolean>= [];
+  public arrayComprobador:Array<number>=[];
   public contador:number=0;
   public contar:string;
   public contadorComprobador=0;
@@ -41,7 +41,7 @@ export class ListComponent implements OnInit {
   }
 
   search() {
-    /*var access = <HTMLInputElement> document.getElementById("check-a");
+    var access = <HTMLInputElement> document.getElementById("check-a");
     var reuniones = <HTMLInputElement> document.getElementById("check-b");
     var recepcion = <HTMLInputElement> document.getElementById("check-c");
     var eventos = <HTMLInputElement> document.getElementById("check-d");
@@ -107,11 +107,10 @@ export class ListComponent implements OnInit {
               this.contadorComprobador++;
             }
           }
-
-          console.log(this.contadorComprobador);
-          if(this.contadorComprobador==(this.arrayComprobador.length-1)){
+          if(this.contadorComprobador==(this.arrayComprobador.length)){
             if(element.comunidad_autonoma==this.opc){
-              this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
+              console.log(element);
+              this.propiedadesFiltradas[this.contador]=element;
               this.contador++;
             }
           }
@@ -119,15 +118,7 @@ export class ListComponent implements OnInit {
           this.contadorComprobador=0;
         }
       }
-    });*/
-
-    this.propiedades.forEach(element =>{
-      if(element.comunidad_autonoma==this.opc){
-        this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
-        this.contador++;
-      }
     });
-
     this.contar=(this.contador/2).toPrecision(1);
   }
 

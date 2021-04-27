@@ -125,7 +125,7 @@
                                                 </div>
                                                 <h3><a href="#">{{propiedad.nombre}}<span class="icon icon-verified"></span></a></h3>
                                                             
-                                                <div class="text">{{propiedad.descripcion}}</div>
+                                                <div class="text">{{propiedad.descripcion | slice:0:200}}...</div>
 
                                                 <ul class="info">
                                                     <li><span class="flaticon-pin"></span> {{propiedad.ciudad}}</li>

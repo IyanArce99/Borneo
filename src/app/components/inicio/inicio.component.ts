@@ -21,9 +21,7 @@ export class InicioComponent implements OnInit {
   public opc: any;
   public comunidad;
   public page:number=1;
-  public mostrarTextoEntero=false;
-  public TextoLimpio;
-  //public arrayTextoLimpio:Array<string>;
+
 
   constructor(private toastr: ToastrService, private _route:ActivatedRoute,private _router:Router, 
     private _propiedadService: PropiedadService, private modal: NgbModal) {
@@ -33,7 +31,6 @@ export class InicioComponent implements OnInit {
     this.propiedades.forEach(element =>{
       if(element.comunidad_autonoma==this.opc){
         this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
-        //element.descripcion.replace(/<[^>]*>/g, "").split(" ").splice(0, 20).join(" ");
         this._router.navigate(['/',element.comunidad_autonoma]);
       }
     });
@@ -48,7 +45,6 @@ export class InicioComponent implements OnInit {
     this.comunidad=this._route.snapshot.params['comunidad_autonoma'];
     this.propiedades.forEach(element =>{
       if(element.comunidad_autonoma==this.comunidad){
-        //element.descripcion.replace(/<[^>]*>/g, "").split(" ").splice(0, 20).join(" ");
         this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
         this._router.navigate(['/',element.comunidad_autonoma]);
       }
