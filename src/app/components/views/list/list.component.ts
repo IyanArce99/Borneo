@@ -71,7 +71,7 @@ export class ListComponent implements OnInit {
     this.arrayBooleanos[11]=wifi.checked;
     this.arrayBooleanos[12]=coworking.checked;
 
-    for(var i=0; i<8; i++){
+    for(var i=0; i<12; i++){
       if(this.arrayBooleanos[i]==true){
         this.arrayComprobador[this.contadorComprobador]=i;
         this.contadorComprobador++;
