@@ -42,6 +42,7 @@ export class ListComponent implements OnInit {
     this.contador=0;
     this.contadorComprobador=0;
     this.propiedadesFiltradas=[];
+    this.arrayComprobador=[];
 
     var access = <HTMLInputElement> document.getElementById("check-a");
     var reuniones = <HTMLInputElement> document.getElementById("check-b");
