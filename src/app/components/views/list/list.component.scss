@@ -1,3 +1,16 @@
 .no-fix {
     position: inherit!important;
 }
+
+.estilos{
+    font-size: 15px;
+}
+
+button{
+    transition-duration: 0.4s;
+}
+
+button:hover{
+    color: white;
+    background-color: #004E59;
+}

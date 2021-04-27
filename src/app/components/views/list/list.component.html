@@ -15,9 +15,10 @@
                                 <div class="listing-search-form">
                                     <form method="post" action="index.html">
                                         <div class="row">
+                                            <!--
                                             <div class="form-group col-lg-4 col-md-12 col-sm-12">
                                                 <input type="text" name="listing-search" placeholder="¿Qué estás buscando?">
-                                            </div>
+                                            </div>-->
                                             <!-- Form Group -->
                                             <div class="form-group col-lg-4 col-md-12 col-sm-12 location">
                                                 <select id="op" [formControl]="selected">
@@ -28,7 +29,7 @@
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-12 col-sm-12 location">
-                                                <button (click)="search()">BUSCAR</button>
+                                                <button (click)="search()" class="estilos">BUSCAR</button>
                                             </div>
             
                                             <!-- 
@@ -92,7 +93,7 @@
                                         <div class="arrange">
                                             <a href="#" class="active"><span class="icon flaticon-squares"></span></a>
                                         </div>
-                                        <div class="text">{{contador}} Resultados encontrados (Enseñando 1-{{contar}})</div>
+                                        <div class="text">{{contador}} Resultados encontrados</div>
                                     </div>
                                     <!--
                                     <div class="sort-by">
