@@ -28,6 +28,7 @@ export class ListComponent implements OnInit {
   public contador:number=0;
   public contar:string;
   public contadorComprobador=0;
+  public comunidad_autonoma:string;
 
   constructor(private toastr: ToastrService, private _route:ActivatedRoute,private _router:Router, 
     private _propiedadService: PropiedadService, private modal: NgbModal) {
@@ -41,6 +42,7 @@ export class ListComponent implements OnInit {
     this.contador=0;
     this.contadorComprobador=0;
     this.propiedadesFiltradas=[];
+
     var access = <HTMLInputElement> document.getElementById("check-a");
     var reuniones = <HTMLInputElement> document.getElementById("check-b");
     var recepcion = <HTMLInputElement> document.getElementById("check-c");
@@ -49,6 +51,11 @@ export class ListComponent implements OnInit {
     var relax = <HTMLInputElement> document.getElementById("check-f");
     var seguridad = <HTMLInputElement> document.getElementById("check-g");
     var limpieza = <HTMLInputElement> document.getElementById("check-h");
+    var certificado = <HTMLInputElement> document.getElementById("check-i");
+    var paqueteria = <HTMLInputElement> document.getElementById("check-j");
+    var parking = <HTMLInputElement> document.getElementById("check-k");
+    var wifi = <HTMLInputElement> document.getElementById("check-l");
+    var coworking = <HTMLInputElement> document.getElementById("check-m");
 
     this.arrayBooleanos[0]=access.checked;
     this.arrayBooleanos[1]=reuniones.checked;
@@ -58,6 +65,11 @@ export class ListComponent implements OnInit {
     this.arrayBooleanos[5]=relax.checked;
     this.arrayBooleanos[6]=seguridad.checked;
     this.arrayBooleanos[7]=limpieza.checked;
+    this.arrayBooleanos[8]=certificado.checked;
+    this.arrayBooleanos[9]=paqueteria.checked;
+    this.arrayBooleanos[10]=parking.checked;
+    this.arrayBooleanos[11]=wifi.checked;
+    this.arrayBooleanos[12]=coworking.checked;
 
     for(var i=0; i<8; i++){
       if(this.arrayBooleanos[i]==true){
@@ -106,6 +118,26 @@ export class ListComponent implements OnInit {
             if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.limpieza){
               this.contadorComprobador++;
             }
+          }if(this.arrayComprobador[j]==8){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.cer_energetica){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==9){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.paqueteria){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==10){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.parking){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==11){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.wifi){
+              this.contadorComprobador++;
+            }
+          }if(this.arrayComprobador[j]==12){
+            if(this.arrayBooleanos[this.arrayComprobador[j]].toString()==element.coworking){
+              this.contadorComprobador++;
+            }
           }
         }
         if(this.contadorComprobador==(this.arrayComprobador.length)){
@@ -125,6 +157,12 @@ export class ListComponent implements OnInit {
     this._propiedadService.getOwned().subscribe(
         result => {
             this.propiedades = result;
+            this.comunidad_autonoma=this._route.snapshot.params['comunidad_autonoma'];
+            this.propiedades.forEach(element =>{
+              if(element.comunidad_autonoma==this.comunidad_autonoma){
+                this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
+              }
+            });
         },
         error => {
             console.log(<any>error);

@@ -29,7 +29,7 @@ const routes: Routes = [
       {path: 'contact', component: ContactComponent}
     ]
   },
-  { path: ':comunidad_autonoma', component: InicioComponent },
+  { path: 'view/list/:comunidad_autonoma', component: ListComponent },
 ];
 
 @NgModule({

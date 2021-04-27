@@ -45,14 +45,17 @@
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-3 col-md-6 col-sm-12">
                                             <select class="chosen-select">
-                                                <option>Nº plazas: 1</option>
+                                                <option>Nº plazas:</option>
+                                                <option>10</option>
+                                                <option>20</option>
+                                                <option>+30</option>
                                             </select>
                                         </div>
 
                                         <!-- Form Group -->
                                         <div class="form-group col-lg-2 col-md-6 col-sm-12 text-right">
                                             <button type="submit" class="theme-btn btn-style-one bg-pink"
-                                                (click)="search(redirect)">Buscar</button>
+                                                (click)="search()">Buscar</button>
                                         </div>
                                     </div>
                                 </form>
@@ -227,8 +230,8 @@
                         <div class="overlay-box">
                             <div class="content">
 
-                                <h5>Barcelona</h5>
-                                <span class="locations">07 Localizaciones</span>
+                                <h5>Area Urbana</h5>
+                                <span class="locations">00 Localizaciones</span>
                                 <a href="/view/list" class="overlay-link"></a>
                             </div>
                         </div>
@@ -241,8 +244,8 @@
                         <figure class="image"><img src="assets/images/inicio/valencia.png" alt=""></figure>
                         <div class="overlay-box">
                             <div class="content">
-                                <h5>Valencia</h5>
-                                <span class="locations">58 Localizaciones</span>
+                                <h5>Centro</h5>
+                                <span class="locations">00 Localizaciones</span>
                                 <a href="/view/list" class="overlay-link"></a>
                             </div>
                         </div>
@@ -255,8 +258,8 @@
                         <figure class="image"><img src="assets/images/inicio/malaga.png" alt=""></figure>
                         <div class="overlay-box">
                             <div class="content">
-                                <h5>Málaga</h5>
-                                <span class="locations">43 Localizaciones</span>
+                                <h5>Zona sur</h5>
+                                <span class="locations">00 Localizaciones</span>
                                 <a href="/view/list" class="overlay-link"></a>
                             </div>
                         </div>
@@ -269,22 +272,22 @@
                         <figure class="image"><img src="assets/images/inicio/Oviedo.png" alt=""></figure>
                         <div class="overlay-box">
                             <div class="content">
-                                <h5>Oviedo</h5>
-                                <span class="locations">13 Localizaciones</span>
+                                <h5>Zona norte</h5>
+                                <span class="locations">00 Localizaciones</span>
                                 <a href="/view/list" class="overlay-link"></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Feature Block -->
+                 
                 <div class="feature-block col-lg-3 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <figure class="image"><img src="assets/images/inicio/donostia.png" alt=""></figure>
                         <div class="overlay-box">
                             <div class="content">
-                                <h5>Donostia</h5>
-                                <span class="locations">129 Localizaciones</span>
+                                <h5>Periferia</h5>
+                                <span class="locations">00 Localizaciones</span>
                                 <a href="/view/list" class="overlay-link"></a>
                             </div>
                         </div>
@@ -298,8 +301,8 @@
                         <div class="overlay-box">
                             <div class="content">
                                 <h5>Madrid</h5>
-                                <span class="locations">6 Localizaciones</span>
-                                <a href="/view/list" class="overlay-link"></a>
+                                <span class="locations">03 Localizaciones</span>
+                                <a (click)="buscar()" class="overlay-link"></a>
                             </div>
                         </div>
                     </div>
@@ -321,7 +324,7 @@
                 <div class="four-items-carousel owl-carousel owl-theme default-nav">
                     <div class="container-fluir">
                         <div class="row">
-                            <div class="col-4" *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 3, currentPage: page }">
+                            <div class="col-4" *ngFor="let propiedad of propiedades | paginate: { itemsPerPage: 3, currentPage: page }">
                                 <div class="listing-block">
                                     <div class="inner-box">
                                         <div class="image-box">

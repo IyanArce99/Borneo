@@ -82,6 +82,26 @@
                                             <input id="check-h" type="checkbox" name="check">
                                             <label for="check-h">Limpieza</label>                                
                                         </li>
+                                        <li>
+                                            <input id="check-i" type="checkbox" name="check">
+                                            <label for="check-i">Certificado</label>                                
+                                        </li>
+                                        <li>
+                                            <input id="check-j" type="checkbox" name="check">
+                                            <label for="check-j">Paqueteria</label>                                
+                                        </li>
+                                        <li>
+                                            <input id="check-k" type="checkbox" name="check">
+                                            <label for="check-k">Parking</label>                                
+                                        </li>
+                                        <li>
+                                            <input id="check-l" type="checkbox" name="check">
+                                            <label for="check-l">Wifi</label>                                
+                                        </li>
+                                        <li>
+                                            <input id="check-m" type="checkbox" name="check">
+                                            <label for="check-m">Coworking</label>                                
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -115,8 +135,8 @@
                                             <div class="image-box">
                                                 <figure class="image"><img src="assets/images/view/office3.png" alt=""></figure>
                                                 <div class="tags">
-                                                    <span>Destacado</span>
-                                                    <span>{{propiedad.tarifa}} euros/mes</span>
+                                                    <span>+{{propiedad.personas}} personas</span>
+                                                    <span>Desde: {{propiedad.tarifa}} euros</span>
                                                 </div>
                                             </div>
                                             <div class="lower-content">
@@ -128,7 +148,7 @@
                                                     <span class="fa fa-star"></span>
                                                     <span class="fa fa-star"></span>
                                                 </div>
-                                                <h3><a href="#">{{propiedad.nombre}}<span class="icon icon-verified"></span></a></h3>
+                                                <h3><a [routerLink]="['/view/office',propiedad.id]">{{propiedad.nombre}}<span class="icon icon-verified"></span></a></h3>
                                                             
                                                 <div class="text">{{propiedad.descripcion | slice:0:200}}...</div>
 
@@ -137,12 +157,12 @@
                                                     <li><span class="flaticon-phone-call"></span>633 83 24 14</li>
                                                 </ul>
                                             </div>
-                                            <div class="bottom-box">
+                                            <!--<div class="bottom-box">
                                                 <div class="places"> 
                                                     <div class="place"><span class="icon flaticon-user"></span> +{{propiedad.personas}} personas </div>
                                                 </div>
                                                 <div class="status">Cerrado</div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                         
                                         <a href="view/office" class="listing-item-container overlay-link" data-marker-id="1"></a>

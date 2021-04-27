@@ -50,7 +50,7 @@
         <table class="table">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col-md-1">Id Propiedad</th>
+                    <th scope="col-md-1">Nombre Propiedad</th>
                     <th scope="col-1">Acceso</th>
                     <th scope="col-1">Reuniones</th>
                     <th scope="col-1">Recepcion</th>
@@ -59,13 +59,18 @@
                     <th scope="col-1">Zona relax</th>
                     <th scope="col-1">Seguridad</th>
                     <th scope="col-1">Limpieza</th>
+                    <th scope="col-1">Certificado</th>
+                    <th scope="col-1">Paqueteria</th>
+                    <th scope="col-1">Parking</th>
+                    <th scope="col-1">Wifi</th>
+                    <th scope="col-1">Coworking</th>
                     <th></th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr *ngFor="let propiedad of propiedades">
-                    <th scope="row">{{propiedad.id}}</th>
+                    <th scope="row">{{propiedad.nombre}}</th>
                     <td *ngIf="propiedad.access=='true'">Si</td>
                     <td *ngIf="propiedad.access=='false'">No</td>
 
@@ -89,6 +94,21 @@
 
                     <td *ngIf="propiedad.limpieza=='true'">Si</td>
                     <td *ngIf="propiedad.limpieza=='false'">No</td>
+
+                    <td *ngIf="propiedad.cer_energetica=='true'">Si</td>
+                    <td *ngIf="propiedad.cer_energetica=='false'">No</td>
+
+                    <td *ngIf="propiedad.paqueteria=='true'">Si</td>
+                    <td *ngIf="propiedad.paqueteria=='false'">No</td>
+
+                    <td *ngIf="propiedad.parking=='true'">Si</td>
+                    <td *ngIf="propiedad.parking=='false'">No</td>
+
+                    <td *ngIf="propiedad.wifi=='true'">Si</td>
+                    <td *ngIf="propiedad.wifi=='false'">No</td>
+
+                    <td *ngIf="propiedad.coworking=='true'">Si</td>
+                    <td *ngIf="propiedad.coworking=='false'">No</td>
                     <td class="botones">
                         <div>
                             <button type="button" class="editar"><i class="fas fa-pen" [routerLink]="['/dashboard/editPropertys',propiedad.id]"></i></button>

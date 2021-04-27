@@ -19,14 +19,19 @@ export class EditarPropiedadesComponent {
         nombre: new FormControl(''),
         descripcion: new FormControl(''),
         personas: new FormControl(''),
-        access: new FormControl(''),
-        salas_reuniones: new FormControl(''),
-        reception: new FormControl(''),
-        eventos_network: new FormControl(''),
-        terraza: new FormControl(''),
-        cafe_relax: new FormControl(''),
-        seguridad: new FormControl(''),
-        limpieza: new FormControl(''),
+        access: new FormControl(false),
+        salas_reuniones: new FormControl(false),
+        reception: new FormControl(false),
+        eventos_network: new FormControl(false),
+        terraza: new FormControl(false),
+        cafe_relax: new FormControl(false),
+        seguridad: new FormControl(false),
+        limpieza: new FormControl(false),
+        cer_energetica: new FormControl(false),
+        paqueteria: new FormControl(false),
+        parking: new FormControl(false),
+        wifi: new FormControl(false),
+        coworking: new FormControl(false),
         tarifa: new FormControl(''),
         tipo_propiedad: new FormControl(''),
         imagen: new FormControl(''),
@@ -90,6 +95,32 @@ export class EditarPropiedadesComponent {
                             this.propertyForm.get('limpieza').setValue(true);
                         } else {
                             this.propertyForm.get('limpieza').setValue(false);
+                        }
+                        /*---------------------------------------------------------------------------------*/
+                        if (this.propiedad[i].cer_energetica == "true") {
+                            this.propertyForm.get('cer_energetica').setValue(true);
+                        } else {
+                            this.propertyForm.get('cer_energetica').setValue(false);
+                        }
+                        if (this.propiedad[i].paqueteria == "true") {
+                            this.propertyForm.get('paqueteria').setValue(true);
+                        } else {
+                            this.propertyForm.get('paqueteria').setValue(false);
+                        }
+                        if (this.propiedad[i].parking == "true") {
+                            this.propertyForm.get('parking').setValue(true);
+                        } else {
+                            this.propertyForm.get('parking').setValue(false);
+                        }
+                        if (this.propiedad[i].wifi == "true") {
+                            this.propertyForm.get('wifi').setValue(true);
+                        } else {
+                            this.propertyForm.get('wifi').setValue(false);
+                        }
+                        if (this.propiedad[i].coworking == "true") {
+                            this.propertyForm.get('coworking').setValue(true);
+                        } else {
+                            this.propertyForm.get('coworking').setValue(false);
                         }
                         this.propertyForm.get('tarifa').setValue(this.propiedad[i].tarifa);
                         this.propertyForm.get('tipo_propiedad').setValue(this.propiedad[i].tipo_propiedad);
@@ -156,6 +187,31 @@ export class EditarPropiedadesComponent {
                 this.propertyForm.get('limpieza').setValue("true");
             } else {
                 this.propertyForm.get('limpieza').setValue("false");
+            }
+            if (this.propertyForm.get('cer_energetica').value == true) {
+                this.propertyForm.get('cer_energetica').setValue("true");
+            } else {
+                this.propertyForm.get('cer_energetica').setValue("false");
+            }
+            if (this.propertyForm.get('paqueteria').value == true) {
+                this.propertyForm.get('paqueteria').setValue("true");
+            } else {
+                this.propertyForm.get('paqueteria').setValue("false");
+            }
+            if (this.propertyForm.get('parking').value == true) {
+                this.propertyForm.get('parking').setValue("true");
+            } else {
+                this.propertyForm.get('parking').setValue("false");
+            }
+            if (this.propertyForm.get('wifi').value == true) {
+                this.propertyForm.get('wifi').setValue("true");
+            } else {
+                this.propertyForm.get('wifi').setValue("false");
+            }
+            if (this.propertyForm.get('coworking').value == true) {
+                this.propertyForm.get('coworking').setValue("true");
+            } else {
+                this.propertyForm.get('coworking').setValue("false");
             }
             this._propiedadService.editPropiedad(id, this.propertyForm.value).subscribe(
                 result => {

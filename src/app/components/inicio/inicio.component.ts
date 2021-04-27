@@ -27,37 +27,22 @@ export class InicioComponent implements OnInit {
     private _propiedadService: PropiedadService, private modal: NgbModal) {
   }
 
-  search(el:HTMLElement) {
-    this.propiedades.forEach(element =>{
-      if(element.comunidad_autonoma==this.opc){
-        this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
-        this._router.navigate(['/',element.comunidad_autonoma]);
-      }
-    });
-    el.scrollIntoView();
+  search() {
+    this._router.navigate(['/view/list',this.opc]);
+  }
+
+  buscar(){
+    this._router.navigate(['/view/list',"madrid"]);
   }
 
   Opciones(opc1) {
     this.opc=opc1;
   }
 
-  recarga(){
-    this.comunidad=this._route.snapshot.params['comunidad_autonoma'];
-    this.propiedades.forEach(element =>{
-      if(element.comunidad_autonoma==this.comunidad){
-        this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
-        this._router.navigate(['/',element.comunidad_autonoma]);
-      }
-    });
-  }
-
   getOwned(){
     this._propiedadService.getOwned().subscribe(
         result => {
             this.propiedades = result;
-            if(this._router.url!='/'){
-              this.recarga();
-            }
         },
         error => {
             console.log(<any>error);
