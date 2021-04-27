@@ -20,6 +20,7 @@
                     <th scope="col-1">Direccion</th>
                     <th scope="col-1">Ciudad</th>
                     <th scope="col-1">C.autónoma</th>
+                    <th scope="col-1">Telefono</th>
                     <th></th>
                 </tr>
             </thead>
@@ -35,6 +36,7 @@
                     <td>{{propiedad.direccion}}</td>
                     <td>{{propiedad.ciudad}}</td>
                     <td>{{propiedad.comunidad_autonoma}}</td>
+                    <td>{{propiedad.telefono}}</td>
                     <td class="botones">
                         <div>
                             <button type="button" class="editar" [routerLink]="['/dashboard/editPropertys',propiedad.id]"><i class="fas fa-pen"></i></button>

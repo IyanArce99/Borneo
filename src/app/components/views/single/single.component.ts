@@ -17,6 +17,7 @@ export class SingleComponent implements OnInit {
   public propiedad: Owned;
   public data: any;
   public id;
+  public propiedades:Owned;
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _propiedadService: PropiedadService) {
   
@@ -32,9 +33,23 @@ export class SingleComponent implements OnInit {
     );
   }
 
+  getOwned(){
+    this._propiedadService.getOwned().subscribe(
+        result => {
+            this.propiedades = result;
+        },
+        error => {
+            console.log(<any>error);
+        }
+    );
+  }
+
   ngOnInit() {
     this.id=this._route.snapshot.params['id'];
     this.recogerDato();
+    this.getOwned();
   }
+
+
 
 }

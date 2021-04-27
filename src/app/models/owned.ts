@@ -3,5 +3,5 @@ export class Owned{
     public salas_reuniones:string,public reception:string,public eventos_network:string,public terraza:string, 
     public cafe_relax:string, public seguridad:string,public limpieza:string,public cer_energetica:string,public paqueteria:string,
     public parking:string, public wifi:string, public coworking:string,public tarifa:number,public tipo_propiedad:string,
-    public imagen:string, public direccion:string, public ciudad:string, public comunidad_autonoma:string){}
+    public imagen:string, public direccion:string, public ciudad:string, public comunidad_autonoma:string, public telefono:String){}
 }

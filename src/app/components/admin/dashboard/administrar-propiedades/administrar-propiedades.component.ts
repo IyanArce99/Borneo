@@ -37,13 +37,13 @@ export class AdministrarPropiedadesComponent {
     direccion: new FormControl(''),
     ciudad: new FormControl(''),
     comunidad_autonoma: new FormControl(''),
+    telefono: new FormControl(''),
   });
 
   constructor(private _route: ActivatedRoute, private _router: Router, private _propiedadService: PropiedadService, private fb: FormBuilder) {
   }
 
   onSubmit() {
-    console.log(this.propertyForm.get('access').value);
     if (this.propertyForm.get('access').value == true) {
       this.propertyForm.get('access').setValue("true");
     } else {

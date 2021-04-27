@@ -38,6 +38,7 @@ export class EditarPropiedadesComponent {
         direccion: new FormControl(''),
         ciudad: new FormControl(''),
         comunidad_autonoma: new FormControl(''),
+        telefono: new FormControl(''),
     });
 
     ngOnInit() {
@@ -96,7 +97,6 @@ export class EditarPropiedadesComponent {
                         } else {
                             this.propertyForm.get('limpieza').setValue(false);
                         }
-                        /*---------------------------------------------------------------------------------*/
                         if (this.propiedad[i].cer_energetica == "true") {
                             this.propertyForm.get('cer_energetica').setValue(true);
                         } else {
@@ -127,6 +127,7 @@ export class EditarPropiedadesComponent {
                         this.propertyForm.get('direccion').setValue(this.propiedad[i].direccion);
                         this.propertyForm.get('ciudad').setValue(this.propiedad[i].ciudad);
                         this.propertyForm.get('comunidad_autonoma').setValue(this.propiedad[i].comunidad_autonoma);
+                        this.propertyForm.get('telefono').setValue(this.propiedad[i].telefono);
                     }
                 }, error => {
                     console.log(<any>error);
