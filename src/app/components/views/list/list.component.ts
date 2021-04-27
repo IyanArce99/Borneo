@@ -34,13 +34,12 @@ export class ListComponent implements OnInit {
   }
 
   Opciones(opc1) {
-    this.contador=0;
-    this.contadorComprobador=0;
     this.opc=opc1;
-    this.search();
   }
 
   search() {
+    this.contador=0;
+    this.contadorComprobador=0;
     var access = <HTMLInputElement> document.getElementById("check-a");
     var reuniones = <HTMLInputElement> document.getElementById("check-b");
     var recepcion = <HTMLInputElement> document.getElementById("check-c");
@@ -107,16 +106,15 @@ export class ListComponent implements OnInit {
               this.contadorComprobador++;
             }
           }
-          if(this.contadorComprobador==(this.arrayComprobador.length)){
-            if(element.comunidad_autonoma==this.opc){
-              console.log(element);
-              this.propiedadesFiltradas[this.contador]=element;
-              this.contador++;
-            }
-          }
-
-          this.contadorComprobador=0;
         }
+        if(this.contadorComprobador==(this.arrayComprobador.length)){
+          if(element.comunidad_autonoma==this.opc){
+            this.propiedadesFiltradas[this.contador]=element;
+            this.contador++;
+          }
+        }
+
+        this.contadorComprobador=0;
       }
     });
     this.contar=(this.contador/2).toPrecision(1);
