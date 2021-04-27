@@ -40,6 +40,7 @@ export class ListComponent implements OnInit {
   search() {
     this.contador=0;
     this.contadorComprobador=0;
+    this.propiedadesFiltradas=[];
     var access = <HTMLInputElement> document.getElementById("check-a");
     var reuniones = <HTMLInputElement> document.getElementById("check-b");
     var recepcion = <HTMLInputElement> document.getElementById("check-c");
