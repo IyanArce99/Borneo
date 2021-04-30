@@ -15,10 +15,6 @@ export class ContactComponent implements OnInit {
   constructor(private _route:ActivatedRoute,private _router:Router, 
     private _contactoService: ContactService) {}
 
-  ngOnInit() {
-    this.getContact();
-  }
-
   getContact(){
     this._contactoService.getContact().subscribe(
         result => {
@@ -28,6 +24,10 @@ export class ContactComponent implements OnInit {
             console.log(<any>error);
         }
     );
+  }
+
+  ngOnInit() {
+    this.getContact();
   }
 
 }

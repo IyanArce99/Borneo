@@ -2,52 +2,58 @@
 
     <!--FORMULARIO -->
     <div class="col-lg-12 col-md-10">
-        <!-- Form Widget -->
-
-        <div class="form-widget ls-widget">
-            <div class="widget-title">
-                <h4><span class="fas fa-building icon"></span> Añadir Propiedad</h4>
-            </div>
-
-            <div class="widget-content">
-                <!--PARTE DEL FORMULARIO PARA AÑADIR UNA IMÁGEN-->
-                <div class="uploading-outer">
-                    <div class="uploadButton">
-                        <input class="uploadButton-input" type="file" name="attachments[]"
-                            accept="image/*, application/pdf" id="upload" multiple />
-                        <label class="uploadButton-button ripple-effect" for="upload">Subir foto de propiedad</label>
-                        <span class="uploadButton-file-name"></span>
-                    </div>
+        
+        <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+            <div class="form-widget ls-widget">
+                <!--CABECERA-->
+                <div class="widget-title">
+                    <h4><span class="fas fa-building icon"></span> Añadir Propiedad</h4>
                 </div>
 
-                <!-- Formulario -->
-                <div class="default-form">
-                    <!--Formulario-->
+                <!--CONTENIDO-->
+                <div class="widget-content">
+                    <!--PARTE DEL FORMULARIO PARA AÑADIR UNA IMÁGEN-->
+                    <div class="uploading-outer">
+                        <div class="uploadButton">
+                            <input class="uploadButton-input" type="file" (change)="fileChangeEvent($event)" 
+                            id="upload" multiple/>
 
-                    <!--- new form-->
-                    <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
-                        <!--N certificado/Nombre/Apellidos/NumeroDeMovil-->
+                            <!--
+                            <div *ngIf="previsualizacion">
+                                <img [src]="previsualizacion" alt="" width="200px"> 
+                            </div>-->
+
+                            <label class="uploadButton-button ripple-effect" for="upload">Subir foto de
+                                propiedad</label>
+                            <span class="uploadButton-file-name"></span>
+                        </div>
+                    </div>
+
+                    <!-- Formulario -->
+                    <div class="default-form">
                         <div class="row">
+
                             <div class="col-md-3 col-12">
                                 <label>Nombre propiedad</label>
-                                <input type="text" formControlName="nombre"
-                                class="form-control" placeholder="Nombre propiedad" required>
+                                <input type="text" formControlName="nombre" class="form-control"
+                                    placeholder="Nombre propiedad" required>
                             </div>
+
                             <div class="col-md-2 col-12">
                                 <label>Tarifa</label>
-                                <input type="text" formControlName="tarifa" 
-                                class="form-control" placeholder="Tarifa" required>
+                                <input type="text" formControlName="tarifa" class="form-control" placeholder="Tarifa"
+                                    required>
                             </div>
+
                             <div class="col-md-2 col-12">
                                 <label>Capacidad</label>
-                                <input type="text" formControlName="personas" 
-                                class="form-control" placeholder="Capacidad" required>
+                                <input type="text" formControlName="personas" class="form-control"
+                                    placeholder="Capacidad" required>
                             </div>
-                            <!--tipo de departamento-->
+
                             <div class="col-md-2">
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Tipo de propiedad</label>
-                                <select class="custom-select mr-sm-2"
-                                formControlName="tipo_propiedad">
+                                <select class="custom-select mr-sm-2" formControlName="tipo_propiedad">
                                     <option selected>Escoger...</option>
                                     <option value="residencial">Residencial</option>
                                     <option value="comercial">Comercial</option>
@@ -55,6 +61,7 @@
                                     <option value="apartamentos">Apartamentos</option>
                                 </select>
                             </div>
+
                         </div>
 
                         <div class="row">
@@ -117,14 +124,15 @@
                         <div class="row">
                             <div class="col-md-3 col-12">
                                 <label>Dirección</label>
-                                <input type="text" formControlName="direccion"
-                                class="form-control" placeholder="Dirección" required>
+                                <input type="text" formControlName="direccion" class="form-control"
+                                    placeholder="Dirección" required>
                             </div>
                             <div class="col-md-3 col-12">
                                 <label>Ciudad</label>
-                                <input type="text" formControlName="ciudad" 
-                                class="form-control" placeholder="Ciudad" required>
+                                <input type="text" formControlName="ciudad" class="form-control" placeholder="Ciudad"
+                                    required>
                             </div>
+
                             <div class="col-md-3 col-12">
                                 <label>Comunidad Autónoma</label>
                                 <select class="custom-select mr-sm-2" formControlName="comunidad_autonoma">
@@ -182,10 +190,11 @@
                                     <option value='zaragoza'>Zaragoza</option>
                                 </select>
                             </div>
+
                             <div class="col-md-3 col-12">
                                 <label>Telefono</label>
-                                <input type="text" formControlName="telefono" 
-                                class="form-control" placeholder="Telefono" required>
+                                <input type="text" formControlName="telefono" class="form-control"
+                                    placeholder="Telefono" required>
                             </div>
                         </div>
 
@@ -201,121 +210,9 @@
                                 <button class="theme-btn btn-style-two" type="submit" name="submit-form">Enviar</button>
                             </div>
                         </div>
-                    </form>
-
-                    
-                    <!-- <form #propiedadPost="ngForm" (ngSubmit)="onSubmit()">
-
-                        <div class="row">
-                            <div class="col-md-3 col-12">
-                                <label>Nombre propiedad</label>
-                                <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="propiedad.nombre" 
-                                class="form-control" placeholder="Nombre propiedad" required>
-                            </div>
-                            <div class="col-md-2 col-12">
-                                <label>Tarifa</label>
-                                <input type="text" #tarifa="ngModel" name="tarifa" [(ngModel)]="propiedad.tarifa" 
-                                class="form-control" placeholder="Tarifa" required>
-                            </div>
-                            <div class="col-md-2 col-12">
-                                <label>Capacidad</label>
-                                <input type="text" #personas="ngModel" name="personas" [(ngModel)]="propiedad.personas" 
-                                class="form-control" placeholder="Capacidad" required>
-                            </div>
-
-                            <div class="col-md-2">
-                                <label class="mr-sm-2" for="inlineFormCustomSelect">Tipo de propiedad</label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" 
-                                name="tipoPropiedad" #tipo_propiedad="ngModel" [(ngModel)]="propiedad.tipo_propiedad">
-                                    <option selected>Escoger...</option>
-                                    <option value="residencial">Residencial</option>
-                                    <option value="comercial">Comercial</option>
-                                    <option value="industrial">Industrial</option>
-                                    <option value="apartamentos">Apartamentos</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-check-inline col-md-1 col-12">
-                                    <input class="form-check-input" type="checkbox" name="access" value="1"
-                                    [(ngModel)]="propiedad.access" #access="ngModel">
-                                    <label class="form-check-label">Acceso 24/7</label>
-                                </div>
-                                <div class="form-check-inline col-md-1 col-12">
-                                    <input class="form-check-input" type="checkbox" value="1" name="reuniones" 
-                                    [(ngModel)]="propiedad.salas_reuniones" #salas_reuniones="ngModel">
-                                    <label class="form-check-label">Reuniones</label>
-                                </div>
-                                <div class="form-check-inline col-md-1 col-12">
-                                    <input class="form-check-input" type="checkbox" value="1" name="reception" 
-                                    [(ngModel)]="propiedad.reception" #reception="ngModel">
-                                    <label class="form-check-label">Recepción</label>
-                                </div>
-                                <div class="form-check-inline col-md-1 col-12">
-                                    <input class="form-check-input" type="checkbox" value="1" name="eventos" 
-                                    [(ngModel)]="propiedad.eventos_network" #eventos_network="ngModel">
-                                    <label class="form-check-label">Eventos</label>
-                                </div>
-                                <div class="form-check-inline col-md-1 col-12">
-                                    <input class="form-check-input" type="checkbox" value="1" name="terraza" 
-                                    [(ngModel)]="propiedad.terraza" #terraza="ngModel">
-                                    <label class="form-check-label">Terraza</label>
-                                </div>
-                                <div class="form-check-inline col-md-1 col-12">
-                                    <input class="form-check-input" type="checkbox" value="1" name="relax" 
-                                    [(ngModel)]="propiedad.cafe_relax" #cafe_relax="ngModel">
-                                    <label class="form-check-label">Zona relax</label>
-                                </div>
-                                <div class="form-check-inline col-md-1 col-12">
-                                    <input class="form-check-input" type="checkbox" value="1" name="seguridad" 
-                                    [(ngModel)]="propiedad.seguridad" #seguridad="ngModel">
-                                    <label class="form-check-label">Seguridad</label>
-                                </div>
-                                <div class="form-check-inline col-md-1 col-12">
-                                    <input class="form-check-input" type="checkbox" value="1" name="limpieza" 
-                                    [(ngModel)]="propiedad.limpieza" #limpieza="ngModel">
-                                    <label class="form-check-label">Limpieza</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-3 col-12">
-                                <label>Dirección</label>
-                                <input type="text" name="direccion" [(ngModel)]="propiedad.direccion" 
-                                class="form-control" placeholder="Dirección" #direccion="ngModel" required>
-                            </div>
-                            <div class="col-md-3 col-12">
-                                <label>Ciudad</label>
-                                <input type="text" name="ciudad" [(ngModel)]="propiedad.ciudad" 
-                                class="form-control" placeholder="Ciudad" #ciudad="ngModel" required>
-                            </div>
-                            <div class="col-md-3 col-12">
-                                <label>Comunidad Autónoma</label>
-                                <input type="text" name="comunidadAutonoma" [(ngModel)]="propiedad.comunidad_autonoma" 
-                                class="form-control" placeholder="C.Autonoma" #comunidad_autonoma="ngModel" required>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <label for="exampleFormControlTextarea1">Descripción</label>
-                                <textarea class="form-control" name="descripcion" [(ngModel)]="propiedad.descripcion" rows="3" 
-                                #descripcion="ngModel" required></textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6 col-12">
-                                <button class="theme-btn btn-style-two" type="submit" name="submit-form">Enviar</button>
-                            </div>
-                        </div>
-                    </form> -->
+                    </div>
                 </div>
-            </div>
-        </div>
-
+            </div>      
+        </form>
     </div>
 </div>

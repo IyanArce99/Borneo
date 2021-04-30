@@ -14,6 +14,8 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class EditarPropiedadesComponent {
     public propiedad: Owned;
     public data: any;
+    public filesToUpload: any=[];
+    //public previsualizacion:string;
 
     propertyForm = new FormGroup({
         nombre: new FormControl(''),
@@ -41,8 +43,7 @@ export class EditarPropiedadesComponent {
         telefono: new FormControl(''),
     });
 
-    ngOnInit() {
-        this.recogerDato();
+    constructor(private _route: ActivatedRoute, private _router: Router, private _propiedadService: PropiedadService, private fb: FormBuilder) {
     }
 
     recogerDato() {
@@ -136,9 +137,6 @@ export class EditarPropiedadesComponent {
         });
     }
 
-    constructor(private _route: ActivatedRoute, private _router: Router, private _propiedadService: PropiedadService, private fb: FormBuilder) {
-    }
-
     onSubmit() {
         this._route.params.forEach((params: Params) => {
             let id = params['id'];
@@ -216,7 +214,6 @@ export class EditarPropiedadesComponent {
             }
             this._propiedadService.editPropiedad(id, this.propertyForm.value).subscribe(
                 result => {
-                    console.log(this.propertyForm.value);
                     this._router.navigate(['/dashboard/listPropertys']);
                 },
                 error => {
@@ -225,4 +222,13 @@ export class EditarPropiedadesComponent {
             );
         });
     }
+
+    fileChangeEvent(fileInput: any){
+        this.filesToUpload = <File> fileInput.target.files[0];   
+    }
+
+    ngOnInit() {
+        this.recogerDato();
+    }
+
 }

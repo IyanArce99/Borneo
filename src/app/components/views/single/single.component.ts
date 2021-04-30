@@ -33,7 +33,7 @@ export class SingleComponent implements OnInit {
     );
   }
 
-  getOwned(){
+  /*getOwned(){
     this._propiedadService.getOwned().subscribe(
         result => {
             this.propiedades = result;
@@ -42,12 +42,12 @@ export class SingleComponent implements OnInit {
             console.log(<any>error);
         }
     );
-  }
+  }*/
 
   ngOnInit() {
     this.id=this._route.snapshot.params['id'];
     this.recogerDato();
-    this.getOwned();
+    //this.getOwned();
   }
 
 

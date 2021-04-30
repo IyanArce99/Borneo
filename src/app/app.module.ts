@@ -9,6 +9,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 // Componentes
 import { InicioComponent } from './components/inicio/inicio.component';
@@ -63,7 +64,8 @@ import { EditarPropiedadesComponent } from './components/admin/dashboard/adminis
     BrowserAnimationsModule,
     NgbModalModule,
     JwPaginationModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxFileDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

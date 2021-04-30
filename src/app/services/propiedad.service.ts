@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders,  HttpResponse, HttpErrorResponse} from '@angula
 import { map } from 'rxjs/operators';
 import {GLOBAL} from './global';
 import {Owned} from '../models/owned';
+import {Imagenes} from '../models/images';
 
 @Injectable()
 export class PropiedadService{
@@ -17,7 +18,7 @@ export class PropiedadService{
         return this._http.get(this.url+'/owned/search');
     }
 
-    deleteOwned(id){
+    deleteOwned(id): Observable<any>{
         return this._http.get(this.url+'/owned/delete/'+id);
     }
 
@@ -31,5 +32,13 @@ export class PropiedadService{
 
     getPropiedad(id): Observable<any>{
         return this._http.get(this.url+'/owned/search/'+id);
+    }
+
+    makeFileRequest(File): Observable<any>{
+        return this._http.post(this.url+'/owned/images',File);
+    }
+
+    addimagenes(imagen:Imagenes):Observable<any> {
+        return this._http.post(this.url+'/images/add', imagen);
     }
 }

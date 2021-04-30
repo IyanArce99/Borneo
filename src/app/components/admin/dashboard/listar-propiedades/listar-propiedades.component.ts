@@ -19,10 +19,6 @@ export class ListarPropiedadesComponent implements OnInit {
   constructor(private toastr: ToastrService, private _route:ActivatedRoute,private _router:Router, 
     private _propiedadService: PropiedadService, private modal: NgbModal) {}
 
-  ngOnInit(){
-    this.getOwned();
-  }
-
   abrirModal(id) {
     this.modal.open(this.modalContent, { size: 'lg' });
     this.idModal=id;
@@ -50,6 +46,10 @@ export class ListarPropiedadesComponent implements OnInit {
             console.log(<any>error);
         }
     );
+  }
+
+  ngOnInit(){
+    this.getOwned();
   }
 
 }
