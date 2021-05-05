@@ -35,7 +35,11 @@ export class PropiedadService{
     }
 
     makeFileRequest(File): Observable<any>{
-        return this._http.post(this.url+'/owned/images',File);
+        const fd= new FormData();
+        for(let i=0; i<File.length; i++){
+            fd.append('uploads1[]',File[i], File[i].name);
+        }
+        return this._http.post(this.url+'/owned/images',fd);
     }
 
     addimagenes(imagen:Imagenes):Observable<any> {

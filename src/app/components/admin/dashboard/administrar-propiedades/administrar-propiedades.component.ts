@@ -7,6 +7,7 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Imagenes } from 'src/app/models/images';
+import { Console } from 'node:console';
 
 @Component({
   selector: 'app-administrar-propiedades',
@@ -51,11 +52,21 @@ export class AdministrarPropiedadesComponent {
     private fb: FormBuilder, private sanitizer: DomSanitizer) {
   }
 
+  fileChangeEvent(fileInput: any){
+    /*const archivo= fileInput.target.files[0];
+    this.extraerBase64(archivo).then((imagen:any) =>{
+      this.previsualizacion = imagen.base;
+    });*/
+
+    //evento para capturar la imagen
+    for(let i=0; i<fileInput.target.files.length; i++){
+      this.filesToUpload.push(fileInput.target.files[i]);
+    }
+  }
+
   onSubmit(){
-    const fd= new FormData();
-    fd.append('uploads1',this.filesToUpload, this.filesToUpload.name);
-    if(this.filesToUpload.name!=null){
-      this._propiedadService.makeFileRequest(fd).subscribe(
+    if(this.filesToUpload.length>0){
+      this._propiedadService.makeFileRequest(this.filesToUpload).subscribe(
         result => {
           this.filesToUpload=result;
           this.guardarProducto();
@@ -66,18 +77,6 @@ export class AdministrarPropiedadesComponent {
     }else{
       this.guardarProducto();
     }
-  }
-
-  guardarImagen(){
-    //Subscribe que añade la imagen a la tabla de imágenes con el id de la propiedad
-    this._propiedadService.addimagenes(this.img).subscribe(
-      result => {
-        this._router.navigate(['dashboard/listPropertys']);
-      },
-      error => {
-        console.log(<any>error);
-      }
-    );
   }
 
   guardarProducto() {
@@ -159,9 +158,8 @@ export class AdministrarPropiedadesComponent {
     this._propiedadService.addPropiedad(this.propertyForm.value).subscribe(
       result => {
         this.propiedad = this.propertyForm.value;
-        
         //si no hay imágenes vamos hacia la pestaña de la lista
-        if(this.filesToUpload.name!=null){
+        if(this.filesToUpload.length==0){
           this._router.navigate(['dashboard/listPropertys']);
         }else{
           //llamamos a un get de todas las propiedades
@@ -172,16 +170,6 @@ export class AdministrarPropiedadesComponent {
         console.log(<any>error);
       }
     );
-  }
-
-  fileChangeEvent(fileInput: any){
-    /*const archivo= fileInput.target.files[0];
-    this.extraerBase64(archivo).then((imagen:any) =>{
-      this.previsualizacion = imagen.base;
-    });*/
-
-    //evento para capturar la imagen
-    this.filesToUpload = fileInput.target.files[0];
   }
 
   getProductos(){
@@ -198,15 +186,34 @@ export class AdministrarPropiedadesComponent {
             if(this.propiedades.length==contador && this.filesToUpload!=null){
               this.idPropiedades=element.id;
 
-              //img con los campos del modelo de imágenes para enviar a la tabla imágenes
+              /*
               this.img=new Imagenes(null,this.filesToUpload,this.idPropiedades);
-              //metodo para guardar imágenes en la tabla imágenes
-              this.guardarImagen();
+              this.guardarImagen();*/
+
+              for(let i; i<this.filesToUpload.length; i++){
+                this.img=new Imagenes(null,this.filesToUpload[i],this.idPropiedades);
+                this.guardarImagen();
+              }
+
+              //this._router.navigate(['dashboard/listPropertys']);
             }
           });
       },
       error => {
           console.log(<any>error);
+      }
+    );
+  }
+
+  guardarImagen(){
+    //Subscribe que añade la imagen a la tabla de imágenes con el id de la propiedad
+    this._propiedadService.addimagenes(this.img).subscribe(
+      result => {
+        console.log(result);
+        //this._router.navigate(['dashboard/listPropertys']);
+      },
+      error => {
+        console.log(<any>error);
       }
     );
   }
