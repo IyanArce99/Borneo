@@ -26,7 +26,6 @@ export class ListComponent implements OnInit {
   public arrayBooleanos:Array<Boolean>= [];
   public arrayComprobador:Array<number>=[];
   public contador:number=0;
-  public contar:string;
   public contadorComprobador=0;
   public comunidad_autonoma:string;
 
@@ -81,9 +80,16 @@ export class ListComponent implements OnInit {
     this.contadorComprobador=0;
 
     this.propiedades.forEach(element =>{
-      if(this.arrayComprobador.length==0 && element.comunidad_autonoma==this.opc){
-        this.propiedadesFiltradas=this.propiedades.filter(x=>x.comunidad_autonoma == element.comunidad_autonoma);
-        this.contador++;
+      if(this.arrayComprobador.length==0){
+        if(this.opc!="null"){
+          if(element.ciudad==this.opc){
+            this.propiedadesFiltradas=this.propiedades.filter(x=>x.ciudad == element.ciudad);
+            this.contador++;
+          }
+        }else{
+          this.propiedadesFiltradas=this.propiedades;
+          this.contador++;
+        }
       }
       else{
         for(var j=0; j<this.arrayComprobador.length; j++){
@@ -141,8 +147,14 @@ export class ListComponent implements OnInit {
             }
           }
         }
+
         if(this.contadorComprobador==(this.arrayComprobador.length)){
-          if(element.comunidad_autonoma==this.opc){
+          if(this.opc!="null"){
+            if(element.ciudad==this.opc){
+              this.propiedadesFiltradas[this.contador]=element;
+              this.contador++;
+            }
+          }else{
             this.propiedadesFiltradas[this.contador]=element;
             this.contador++;
           }
@@ -151,7 +163,6 @@ export class ListComponent implements OnInit {
         this.contadorComprobador=0;
       }
     });
-    this.contar=(this.contador/2).toPrecision(1);
   }
 
   getOwned(){
@@ -176,6 +187,7 @@ export class ListComponent implements OnInit {
       this.Opciones(changes);
     });
     this.getOwned();
+    this.opc="null";
   }
 
 }
