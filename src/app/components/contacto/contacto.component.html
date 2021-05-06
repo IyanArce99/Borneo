@@ -63,9 +63,11 @@
 
                                         <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                             <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre *" required>
+                                            <small *ngIf="nombreNoValido" class="text-danger">Sin espacios ni caracteres especiales</small>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                             <input type="email" formControlName="email" class="form-control" placeholder="Tu email *" required>
+                                            <small *ngIf="emailNoValido" class="text-danger">Formato email incorrecto</small>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 form-group">
                                             <input type="text" formControlName="asunto" class="form-control" placeholder="Asunto *" required>
@@ -74,7 +76,7 @@
                                             <textarea formControlName="mensaje" placeholder="Mensaje" required></textarea>
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 form-group">
-                                            <button class="theme-btn btn-style-two" type="submit" id="submit" name="submit-form">Enviar review</button>
+                                            <button class="theme-btn btn-style-two" type="submit" id="submit" [disabled]="!contactForm.valid" name="submit-form">Enviar review</button>
                                         </div> 
                                     </div>
                                 </form>

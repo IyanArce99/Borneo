@@ -3,8 +3,8 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { PropiedadService } from '../../../../services/propiedad.service';
 import { Owned } from '../../../../models/owned';
 import { GLOBAL } from '../../../../services/global';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
-import {DomSanitizer} from '@angular/platform-browser';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
 import { Imagenes } from 'src/app/models/images';
 import { Console } from 'node:console';
@@ -18,15 +18,15 @@ import { Console } from 'node:console';
 export class AdministrarPropiedadesComponent {
   public propiedad: Owned;
   public propiedades: Array<Owned>;
-  public filesToUpload: any =[];
+  public filesToUpload: any = [];
   public img: Imagenes;
   public idPropiedades;
   //public previsualizacion:string;
 
   propertyForm = new FormGroup({
-    nombre: new FormControl(''),
+    nombre: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZñÑ]{3,50}$")]),
     descripcion: new FormControl(''),
-    personas: new FormControl(''),
+    personas: new FormControl('', [Validators.required, Validators.pattern("^[0-9]{1,50}$")]),
     access: new FormControl(false),
     salas_reuniones: new FormControl(false),
     reception: new FormControl(false),
@@ -40,41 +40,60 @@ export class AdministrarPropiedadesComponent {
     parking: new FormControl(false),
     wifi: new FormControl(false),
     coworking: new FormControl(false),
-    tarifa: new FormControl(''),
+    tarifa: new FormControl('', [Validators.required, Validators.pattern("^[0-9]{1,50}$")]),
     tipo_propiedad: new FormControl(''),
-    direccion: new FormControl(''),
-    ciudad: new FormControl(''),
+    direccion: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZñÑ]{3,70}$")]),
+    ciudad: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZñÑ]{3,50}$")]),
     comunidad_autonoma: new FormControl(''),
-    telefono: new FormControl(''),
+    telefono: new FormControl('', [Validators.required, Validators.pattern("^[0-9]{9}$")]),
   });
 
-  constructor(private _route: ActivatedRoute, private _router: Router, private _propiedadService: PropiedadService, 
+  constructor(private _route: ActivatedRoute, private _router: Router, private _propiedadService: PropiedadService,
     private fb: FormBuilder, private sanitizer: DomSanitizer) {
   }
 
-  fileChangeEvent(fileInput: any){
+  get nombreNoValido() {
+    return this.propertyForm.get("nombre").invalid && this.propertyForm.get("nombre").touched;
+  }
+  get personasNoValido() {
+    return this.propertyForm.get("personas").invalid && this.propertyForm.get("personas").touched;
+  }
+  get tarifaNoValido() {
+    return this.propertyForm.get("tarifa").invalid && this.propertyForm.get("tarifa").touched;
+  }
+  get direccionNoValido() {
+    return this.propertyForm.get("tipo_propiedad").invalid && this.propertyForm.get("tipo_propiedad").touched;
+  }
+  get ciudadNoValido() {
+    return this.propertyForm.get("ciudad").invalid && this.propertyForm.get("ciudad").touched;
+  }
+  get telefonoNoValido() {
+    return this.propertyForm.get("telefono").invalid && this.propertyForm.get("telefono").touched;
+  }
+
+  fileChangeEvent(fileInput: any) {
     /*const archivo= fileInput.target.files[0];
     this.extraerBase64(archivo).then((imagen:any) =>{
       this.previsualizacion = imagen.base;
     });*/
 
     //evento para capturar la imagen
-    for(let i=0; i<fileInput.target.files.length; i++){
+    for (let i = 0; i < fileInput.target.files.length; i++) {
       this.filesToUpload.push(fileInput.target.files[i]);
     }
   }
 
-  onSubmit(){
-    if(this.filesToUpload.length>0){
+  onSubmit() {
+    if (this.filesToUpload.length > 0) {
       this._propiedadService.makeFileRequest(this.filesToUpload).subscribe(
         result => {
-          this.filesToUpload=result;
+          this.filesToUpload = result;
           this.guardarProducto();
-        },error=>{
+        }, error => {
           console.log(error);
         }
       )
-    }else{
+    } else {
       this.guardarProducto();
     }
   }
@@ -159,9 +178,9 @@ export class AdministrarPropiedadesComponent {
       result => {
         this.propiedad = this.propertyForm.value;
         //si no hay imágenes vamos hacia la pestaña de la lista
-        if(this.filesToUpload.length==0){
+        if (this.filesToUpload.length == 0) {
           this._router.navigate(['dashboard/listPropertys']);
-        }else{
+        } else {
           //llamamos a un get de todas las propiedades
           this.getProductos();
         }
@@ -172,40 +191,40 @@ export class AdministrarPropiedadesComponent {
     );
   }
 
-  getProductos(){
+  getProductos() {
     //llamamos a todas las propiedades
     this._propiedadService.getOwned().subscribe(
       result => {
-          this.propiedades = result;
-          //creamos un contador para recorrerlas
-          let contador=0;
-          //recorremos las propiedades en busca del último id (ya que este es el que necesitamos para enlazar con las imágenes)
-          this.propiedades.forEach(element => {
-            contador++;
-            //si es el último id y las imágenes no están vacías pasamos a una variable ese id y lo agregamos a img de tipo imágenes
-            if(this.propiedades.length==contador && this.filesToUpload!=null){
-              this.idPropiedades=element.id;
+        this.propiedades = result;
+        //creamos un contador para recorrerlas
+        let contador = 0;
+        //recorremos las propiedades en busca del último id (ya que este es el que necesitamos para enlazar con las imágenes)
+        this.propiedades.forEach(element => {
+          contador++;
+          //si es el último id y las imágenes no están vacías pasamos a una variable ese id y lo agregamos a img de tipo imágenes
+          if (this.propiedades.length == contador && this.filesToUpload != null) {
+            this.idPropiedades = element.id;
 
-              /*
-              this.img=new Imagenes(null,this.filesToUpload,this.idPropiedades);
-              this.guardarImagen();*/
+            /*
+            this.img=new Imagenes(null,this.filesToUpload,this.idPropiedades);
+            this.guardarImagen();*/
 
-              for(let i; i<this.filesToUpload.length; i++){
-                this.img=new Imagenes(null,this.filesToUpload[i],this.idPropiedades);
-                this.guardarImagen();
-              }
-
-              //this._router.navigate(['dashboard/listPropertys']);
+            for (let i; i < this.filesToUpload.length; i++) {
+              this.img = new Imagenes(null, this.filesToUpload[i], this.idPropiedades);
+              this.guardarImagen();
             }
-          });
+
+            //this._router.navigate(['dashboard/listPropertys']);
+          }
+        });
       },
       error => {
-          console.log(<any>error);
+        console.log(<any>error);
       }
     );
   }
 
-  guardarImagen(){
+  guardarImagen() {
     //Subscribe que añade la imagen a la tabla de imágenes con el id de la propiedad
     this._propiedadService.addimagenes(this.img).subscribe(
       result => {

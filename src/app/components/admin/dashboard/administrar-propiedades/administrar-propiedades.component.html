@@ -37,18 +37,21 @@
                                 <label>Nombre propiedad</label>
                                 <input type="text" formControlName="nombre" class="form-control"
                                     placeholder="Nombre propiedad" required>
+                                <small *ngIf="nombreNoValido" class="text-danger">Sin espacios ni caracteres especiales</small>
                             </div>
 
                             <div class="col-md-2 col-12">
                                 <label>Tarifa</label>
                                 <input type="text" formControlName="tarifa" class="form-control" placeholder="Tarifa"
                                     required>
+                                <small *ngIf="tarifaNoValido" class="text-danger">Sin letras ni caracteres especiales</small>
                             </div>
 
                             <div class="col-md-2 col-12">
                                 <label>Capacidad</label>
                                 <input type="text" formControlName="personas" class="form-control"
                                     placeholder="Capacidad" required>
+                                <small *ngIf="personasNoValido" class="text-danger">Sin letras ni caracteres especiales</small>
                             </div>
 
                             <div class="col-md-2">
@@ -126,11 +129,13 @@
                                 <label>Dirección</label>
                                 <input type="text" formControlName="direccion" class="form-control"
                                     placeholder="Dirección" required>
+                                <small *ngIf="direccionNoValido" class="text-danger">Maximo 70 caracteres</small>
                             </div>
                             <div class="col-md-3 col-12">
                                 <label>Ciudad</label>
                                 <input type="text" formControlName="ciudad" class="form-control" placeholder="Ciudad"
                                     required>
+                                <small *ngIf="ciudadNoValido" class="text-danger">Sin caracteres especiales ni numeros</small>
                             </div>
 
                             <div class="col-md-3 col-12">
@@ -195,6 +200,7 @@
                                 <label>Telefono</label>
                                 <input type="text" formControlName="telefono" class="form-control"
                                     placeholder="Telefono" required>
+                                <small *ngIf="telefonoNoValido" class="text-danger">solo numeros y en total nueve numeros</small>
                             </div>
                         </div>
 
@@ -207,7 +213,7 @@
 
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <button class="theme-btn btn-style-two" type="submit" name="submit-form">Enviar</button>
+                                <button class="theme-btn btn-style-two" type="submit" [disabled]="!propertyForm.valid" name="submit-form">Enviar</button>
                             </div>
                         </div>
                     </div>

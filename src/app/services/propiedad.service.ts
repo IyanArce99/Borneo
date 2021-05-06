@@ -10,12 +10,15 @@ import {Imagenes} from '../models/images';
 export class PropiedadService{
     public url: string;
 
+
     constructor(public _http:HttpClient){
         this.url=GLOBAL.url;
     }
 
     getOwned(): Observable<any>{
-        return this._http.get(this.url+'/owned/search');
+        const headers = new HttpHeaders();
+        headers.set("Access-Control-Allow-Origin", "*");
+        return this._http.get(this.url+'/owned/search', {headers: headers});
     }
 
     deleteOwned(id): Observable<any>{

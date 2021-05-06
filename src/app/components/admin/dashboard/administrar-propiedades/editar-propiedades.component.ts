@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { PropiedadService } from '../../../../services/propiedad.service';
 import { Owned } from '../../../../models/owned';
 import { GLOBAL } from '../../../../services/global';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-editar-propiedades',
@@ -14,13 +14,32 @@ import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 export class EditarPropiedadesComponent {
     public propiedad: Owned;
     public data: any;
-    public filesToUpload: any=[];
+    public filesToUpload: any = [];
     //public previsualizacion:string;
 
+    get nombreNoValido() {
+        return this.propertyForm.get("nombre").invalid && this.propertyForm.get("nombre").touched;
+    }
+    get personasNoValido() {
+        return this.propertyForm.get("personas").invalid && this.propertyForm.get("personas").touched;
+    }
+    get tarifaNoValido() {
+        return this.propertyForm.get("tarifa").invalid && this.propertyForm.get("tarifa").touched;
+    }
+    get direccionNoValido() {
+        return this.propertyForm.get("tipo_propiedad").invalid && this.propertyForm.get("tipo_propiedad").touched;
+    }
+    get ciudadNoValido() {
+        return this.propertyForm.get("ciudad").invalid && this.propertyForm.get("ciudad").touched;
+    }
+    get telefonoNoValido() {
+        return this.propertyForm.get("telefono").invalid && this.propertyForm.get("telefono").touched;
+    }
+
     propertyForm = new FormGroup({
-        nombre: new FormControl(''),
+        nombre: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZñÑ]{3,50}$")]),
         descripcion: new FormControl(''),
-        personas: new FormControl(''),
+        personas: new FormControl('', [Validators.required, Validators.pattern("^[0-9]{1,50}$")]),
         access: new FormControl(false),
         salas_reuniones: new FormControl(false),
         reception: new FormControl(false),
@@ -34,13 +53,12 @@ export class EditarPropiedadesComponent {
         parking: new FormControl(false),
         wifi: new FormControl(false),
         coworking: new FormControl(false),
-        tarifa: new FormControl(''),
+        tarifa: new FormControl('', [Validators.required, Validators.pattern("^[0-9]{1,50}$")]),
         tipo_propiedad: new FormControl(''),
-        imagen: new FormControl(''),
-        direccion: new FormControl(''),
-        ciudad: new FormControl(''),
+        direccion: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZñÑ]{3,70}$")]),
+        ciudad: new FormControl('', [Validators.required, Validators.pattern("^[a-zA-ZñÑ]{3,50}$")]),
         comunidad_autonoma: new FormControl(''),
-        telefono: new FormControl(''),
+        telefono: new FormControl('', [Validators.required, Validators.pattern("^[0-9]{9}$")]),
     });
 
     constructor(private _route: ActivatedRoute, private _router: Router, private _propiedadService: PropiedadService, private fb: FormBuilder) {
@@ -223,8 +241,8 @@ export class EditarPropiedadesComponent {
         });
     }
 
-    fileChangeEvent(fileInput: any){
-        this.filesToUpload = <File> fileInput.target.files[0];   
+    fileChangeEvent(fileInput: any) {
+        this.filesToUpload = <File>fileInput.target.files[0];
     }
 
     ngOnInit() {
