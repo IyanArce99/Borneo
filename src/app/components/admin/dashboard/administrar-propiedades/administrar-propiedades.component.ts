@@ -205,12 +205,9 @@ export class AdministrarPropiedadesComponent {
           if (this.propiedades.length == contador && this.filesToUpload != null) {
             this.idPropiedades = element.id;
 
-            /*
-            this.img=new Imagenes(null,this.filesToUpload,this.idPropiedades);
-            this.guardarImagen();*/
-
-            for (let i; i < this.filesToUpload.length; i++) {
-              this.img = new Imagenes(null, this.filesToUpload[i], this.idPropiedades);
+            for (let i=0; i < this.filesToUpload.length; i++) {
+              var json= JSON.stringify(this.filesToUpload[i]);
+              this.img = new Imagenes(null, json, this.idPropiedades);
               this.guardarImagen();
             }
 
@@ -228,8 +225,7 @@ export class AdministrarPropiedadesComponent {
     //Subscribe que añade la imagen a la tabla de imágenes con el id de la propiedad
     this._propiedadService.addimagenes(this.img).subscribe(
       result => {
-        console.log(result);
-        //this._router.navigate(['dashboard/listPropertys']);
+        this._router.navigate(['dashboard/listPropertys']);
       },
       error => {
         console.log(<any>error);

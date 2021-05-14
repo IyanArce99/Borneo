@@ -159,7 +159,6 @@ export class ListComponent implements OnInit {
             this.contador++;
           }
         }
-
         this.contadorComprobador=0;
       }
     });
