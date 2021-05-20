@@ -31,6 +31,7 @@ import { ListarPropiedadesComponent } from './components/admin/dashboard/listar-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EditarPropiedadesComponent } from './components/admin/dashboard/administrar-propiedades/editar-propiedades.component';
+import {AgmCoreModule} from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,10 @@ import { EditarPropiedadesComponent } from './components/admin/dashboard/adminis
     NgbModalModule,
     JwPaginationModule,
     NgxPaginationModule,
-    NgxFileDropModule
+    NgxFileDropModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDAcpz5ILxdpgV_1MjXA5tPd8TkR0viysw'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,34 +5,32 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-6">
-                            <div class="upper-box">
-                                <!-- Top Filters -->
-                                <ul class="top-filters">
-                                    <li class="active"><a href="#">Filtros</a></li>
-                                </ul>
-            
-                                <!-- Listing Form -->
-                                <div class="listing-search-form">
-                                    <form method="post" action="index.html">
-                                        <div class="row">
-                                            <!--
+                        <div class="upper-box">
+                            <ul class="top-filters">
+                                <li class="active"><a href="#">Filtros</a></li>
+                            </ul>
+
+                            <div class="listing-search-form">
+                                <form method="post" action="index.html">
+                                    <div class="row">
+                                        <!--
                                             <div class="form-group col-lg-4 col-md-12 col-sm-12">
                                                 <input type="text" name="listing-search" placeholder="¿Qué estás buscando?">
                                             </div>-->
-                                            <!-- Form Group -->
-                                            <div class="form-group col-lg-4 col-md-12 col-sm-12 location">
-                                                <select id="op" [formControl]="selected">
-                                                    <option value="null" id="opts">Elegir...</option>
-                                                    <option value="Madrid" id="opts">Madrid</option>
-                                                    <option value="madridd" id="opts">Madrid prueba</option>
-                                                </select>
-                                            </div>
+                                        
+                                        <div class="form-group col-lg-4 col-md-12 col-sm-12 location">
+                                            <select id="op" [formControl]="selected">
+                                                <option value="null" id="opts">Elegir...</option>
+                                                <option value="Madrid" id="opts">Madrid</option>
+                                                <option value="madridd" id="opts">Madrid prueba</option>
+                                            </select>
+                                        </div>
 
-                                            <div class="form-group col-lg-4 col-md-12 col-sm-12 location">
-                                                <button (click)="search()" class="estilos">BUSCAR</button>
-                                            </div>
-            
-                                            <!-- 
+                                        <div class="form-group col-lg-4 col-md-12 col-sm-12 location">
+                                            <button (click)="search()" class="estilos">BUSCAR</button>
+                                        </div>
+
+                                        <!-- 
                                             <div class="form-group col-lg-4 col-md-12 col-sm-12">
                                                 <select class="chosen-select">
                                                     <option>Todas las categorías</option>
@@ -42,80 +40,78 @@
                                                     <option>Apartamentos</option>
                                                 </select>
                                             </div>-->
-                                        </div>
-                                    </form>
-                                </div>
-            
-                                <!-- Checkboxes Ouer -->
-                                <div class="checkbox-outer">
-                                    <h4>Etiquetas</h4>
-                                    <ul class="checkboxes inline">
-                                        <li>
-                                            <input id="check-a" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-a">Acceso 24/7</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-b" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-b">Salas de reuniones</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-c" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-c">Recepción</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-d" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-d">Eventos</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-e" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-e">Terraza</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-f" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-f">Zona de relax</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-g" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-g">Seguridad</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-h" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-h">Limpieza</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-i" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-i">Certificado</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-j" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-j">Paqueteria</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-k" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-k">Parking</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-l" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-l">Wifi</label>                                
-                                        </li>
-                                        <li>
-                                            <input id="check-m" type="checkbox" name="check" (change)="search()">
-                                            <label for="check-m">Coworking</label>                                
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-            
-                            <div class="ls-outer">
-                                <!-- ls Switcher -->
-                                <div class="ls-switcher">
-                                    <div class="showing-result">
-                                        <div class="arrange">
-                                            <a href="#" class="active"><span class="icon flaticon-squares"></span></a>
-                                        </div>
-                                        <div class="text">{{contador}} Resultados encontrados</div>
                                     </div>
-                                    <!--
+                                </form>
+                            </div>
+
+                            <div class="checkbox-outer">
+                                <h4>Etiquetas</h4>
+                                <ul class="checkboxes inline">
+                                    <li>
+                                        <input id="check-a" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-a">Acceso 24/7</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-b" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-b">Salas de reuniones</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-c" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-c">Recepción</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-d" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-d">Eventos</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-e" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-e">Terraza</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-f" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-f">Zona de relax</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-g" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-g">Seguridad</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-h" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-h">Limpieza</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-i" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-i">Certificado</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-j" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-j">Paqueteria</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-k" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-k">Parking</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-l" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-l">Wifi</label>
+                                    </li>
+                                    <li>
+                                        <input id="check-m" type="checkbox" name="check" (change)="search()">
+                                        <label for="check-m">Coworking</label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="ls-outer">
+                            <div class="ls-switcher">
+                                <div class="showing-result">
+                                    <div class="arrange">
+                                        <a href="#" class="active"><span class="icon flaticon-squares"></span></a>
+                                    </div>
+                                    <div class="text">{{contador}} Resultados encontrados</div>
+                                </div>
+                                <!--
                                     <div class="sort-by">
                                         <select class="chosen-select">
                                             <option>Sort By</option>
@@ -125,56 +121,59 @@
                                             <option>Apartments</option>
                                         </select>
                                     </div>-->
-                                </div>
-            
-                                 <!-- Listings -->
-                                <div class="row">
-                                    <!-- Listing Block -->
-                                    <div class="listing-block col-lg-6 col-md-12" *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 2, currentPage: page }">
-                                        <div class="inner-box" >
-                                            <div class="image-box">
-                                                <figure class="image"><img src="assets/images/view/office3.png" alt=""></figure>
-                                                <div class="tags">
-                                                    <span>+{{propiedad.personas}} personas</span>
-                                                    <span>Desde: {{propiedad.tarifa}} euros</span>
-                                                </div>
-                                            </div>
-                                            <div class="lower-content">
-                                                <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg" alt="" /></div>
-                                                <div class="rating">
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </div>
-                                                <h3><a [routerLink]="['/view/office',propiedad.id]">{{propiedad.nombre}}<span class="icon icon-verified"></span></a></h3>
-                                                            
-                                                <div class="text">{{propiedad.descripcion | slice:0:200}}...</div>
+                            </div>
 
-                                                <ul class="info">
-                                                    <li><span class="flaticon-pin"></span> {{propiedad.ciudad}}</li>
-                                                    <li><span class="flaticon-phone-call"></span>{{propiedad.telefono}}</li>
-                                                </ul>
+                            <div class="row">
+                                <div class="listing-block col-lg-6 col-md-12"
+                                    *ngFor="let propiedad of propiedadesFiltradas | paginate: { itemsPerPage: 2, currentPage: page }">
+                                    <div class="inner-box">
+                                        <div class="image-box">
+                                            <figure class="image"><img src="assets/images/view/office3.png" alt="">
+                                            </figure>
+                                            <div class="tags">
+                                                <span>+{{propiedad.personas}} personas</span>
+                                                <span>Desde: {{propiedad.tarifa}} euros</span>
                                             </div>
-                                            <!--<div class="bottom-box">
+                                        </div>
+                                        <div class="lower-content">
+                                            <div class="user-thumb"><img src="images/resource/user-thumb-1.jpg"
+                                                    alt="" /></div>
+                                            <div class="rating">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </div>
+                                            <h3><a [routerLink]="['/view/office',propiedad.id]">{{propiedad.nombre}}<span
+                                                        class="icon icon-verified"></span></a></h3>
+
+                                            <div class="text">{{propiedad.descripcion | slice:0:200}}...</div>
+
+                                            <ul class="info">
+                                                <li><span class="flaticon-pin"></span> {{propiedad.ciudad}}</li>
+                                                <li><span class="flaticon-phone-call"></span>{{propiedad.telefono}}</li>
+                                            </ul>
+                                        </div>
+                                        <!--<div class="bottom-box">
                                                 <div class="places"> 
                                                     <div class="place"><span class="icon flaticon-user"></span> +{{propiedad.personas}} personas </div>
                                                 </div>
                                                 <div class="status">Cerrado</div>
                                             </div>-->
-                                        </div>
-                                        
-                                        <!--<a href="view/office" class="listing-item-container overlay-link" data-marker-id="1"></a>-->
                                     </div>
+
+                                    <!--<a href="view/office" class="listing-item-container overlay-link" data-marker-id="1"></a>-->
                                 </div>
-            
-                               <!-- Pagination -->
-                                <nav class="ls-pagination">
-                                    <ul>
-                                        <li class="next"><pagination-controls (pageChange)="page = $event"></pagination-controls></li>
-                                    </ul>
-                                    <!--<ul>
+                            </div>
+
+                            <nav class="ls-pagination">
+                                <ul>
+                                    <li class="next">
+                                        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                                    </li>
+                                </ul>
+                                <!--<ul>
                                         <li class="prev"><a href="#"><i class="flaticon-left"></i> Anterior</a></li>
                                         <li><a href="#">1</a></li>
                                         <li><a href="#" class="current-page">2</a></li>
@@ -183,16 +182,18 @@
                                         <li class="total"><a href="#">14</a></li>
                                         <li class="next"><a href="#">Siguiente <i class="flaticon-right"></i> </a></li>
                                     </ul>-->
-                                </nav>
-                            </div>
+                            </nav>
+                        </div>
                     </div>
+
+<!-------------------------------------GOOGLE MAPS------------------------------------------------------------------------------>                    
                     <div class="col-6">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23199.37794721969!2d-5.830057754047929!3d43.3786498635925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd368cef72eec923%3A0x6f4bc9bad6736013!2sESPACIO%20COWORKER!5e0!3m2!1ses!2ses!4v1616421047707!5m2!1ses!2ses" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [mapTypeId]="mapTypeId">
+                            <agm-marker *ngFor="let marker of markers" [latitude]="marker.position.lat" [longitude]="marker.position.lng" [label]="marker.label" [zoom]="zoom">
+                            </agm-marker>
+                        </agm-map>
                     </div>
                 </div>
-            </div>
-
-            <div class="map-column width-50">
             </div>
         </div>
     </section>

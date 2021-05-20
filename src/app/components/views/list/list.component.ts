@@ -5,8 +5,7 @@ import {PropiedadService} from '../../../services/propiedad.service';
 import {Owned} from '../../../models/owned';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { FormControl } from "@angular/forms";
-import { element } from 'protractor';
-import { access } from 'node:fs';
+
 
 @Component({
   selector: 'app-list',
@@ -29,8 +28,19 @@ export class ListComponent implements OnInit {
   public contadorComprobador=0;
   public comunidad_autonoma:string;
 
+  public lat:number;
+  public lng:number;
+  public zoom:number;
+  public mapTypeId:string;
+  public markers: any[];
+
   constructor(private toastr: ToastrService, private _route:ActivatedRoute,private _router:Router, 
     private _propiedadService: PropiedadService, private modal: NgbModal) {
+      this.lat= 40.4167;
+      this.lng = -3.70325;
+      this.zoom =  15;
+      this.markers = [];
+      this.mapTypeId = 'roadmap';
   }
 
   Opciones(opc1) {
@@ -162,6 +172,28 @@ export class ListComponent implements OnInit {
         this.contadorComprobador=0;
       }
     });
+
+    this.markers.push({
+      position: {
+        lat: 40.4381311,
+        lng: -3.8196233
+      },
+      label: {
+        color: "black",
+        text: "Madrid"
+      }
+    });
+ 
+    this.markers.push({
+      position: {
+        lat: 48.8615515,
+        lng: 2.3112233
+      },
+      label: {
+        color: "black",
+        text: "Paris"
+      }
+    });
   }
 
   getOwned(){
@@ -179,6 +211,28 @@ export class ListComponent implements OnInit {
             console.log(<any>error);
         }
     );
+
+    this.markers.push({
+      position: {
+        lat: 40.4381311,
+        lng: -3.8196233
+      },
+      label: {
+        color: "black",
+        text: "Madrid"
+      }
+    });
+ 
+    this.markers.push({
+      position: {
+        lat: 48.8615515,
+        lng: 2.3112233
+      },
+      label: {
+        color: "black",
+        text: "Paris"
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -189,4 +243,7 @@ export class ListComponent implements OnInit {
     this.opc="null";
   }
 
+  localizacionPorCalle(){
+    
+  }
 }
